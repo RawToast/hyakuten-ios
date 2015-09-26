@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="z0g-er-liP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,100 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ここは質問がある。答えてください！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNj-bP-2P0">
+                                <rect key="frame" x="20" y="291" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4SB-91-VfI">
+                                <rect key="frame" x="20" y="495" width="560" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yza-RH-KJ0">
+                                        <rect key="frame" x="0.0" y="0.0" width="133" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="chooseAnswerA:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2T5-9i-DsQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Kj-2t-Gis">
+                                        <rect key="frame" x="143" y="0.0" width="133" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="chooseAnswerB:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SnB-bR-qFS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z84-Xk-thj">
+                                        <rect key="frame" x="285" y="0.0" width="133" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="chooseAnswerC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kzE-44-dXw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOv-Cb-N0O">
+                                        <rect key="frame" x="428" y="0.0" width="133" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="chooseAnswerD:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K8c-gX-pZE"/>
+                                            <action selector="wewfewf:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fLn-27-Rdy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="4SB-91-VfI" secondAttribute="leading" id="0QD-bJ-PQN"/>
+                            <constraint firstItem="4SB-91-VfI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CUN-qA-fGN"/>
+                            <constraint firstItem="eNj-bP-2P0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GMp-Za-STs"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4SB-91-VfI" secondAttribute="bottom" constant="75" id="KFo-g9-rcs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eNj-bP-2P0" secondAttribute="trailing" id="OWM-PD-GXA"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="eNj-bP-2P0" secondAttribute="leading" id="Zrh-DI-rbA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4SB-91-VfI" secondAttribute="trailing" id="fQ7-D1-9F3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CUN-qA-fGN"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="XnI-r4-fm6"/>
+                    <connections>
+                        <outlet property="answerA" destination="yza-RH-KJ0" id="ya5-gj-lBF"/>
+                        <outlet property="answerButtonA" destination="yza-RH-KJ0" id="7YY-Mt-lde"/>
+                        <outlet property="answerButtonB" destination="8Kj-2t-Gis" id="DRo-Bc-mGm"/>
+                        <outlet property="answerButtonC" destination="Z84-Xk-thj" id="wac-P0-7Jb"/>
+                        <outlet property="answerButtonD" destination="NOv-Cb-N0O" id="DyE-wP-Syb"/>
+                        <outlet property="answerButtoneD" destination="NOv-Cb-N0O" id="w0A-Tg-VC5"/>
+                        <outlet property="chooseAnswerB" destination="8Kj-2t-Gis" id="Kdi-ZZ-jeH"/>
+                        <outlet property="firstAnswer" destination="yza-RH-KJ0" id="zkw-pd-jBO"/>
+                        <outlet property="forthAnswerButton" destination="NOv-Cb-N0O" id="ejv-vS-48U"/>
+                        <outlet property="secondAnswerButton" destination="8Kj-2t-Gis" id="l8w-cL-E0t"/>
+                        <outlet property="thirdAnswerButton" destination="Z84-Xk-thj" id="8mE-E4-5hn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1377" y="464"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GJo-0x-oxQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z0g-er-liP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bXL-Kr-XkN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7Qf-A4-GNg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qu6-ks-qza" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="565" y="1124"/>
         </scene>
     </scenes>
 </document>

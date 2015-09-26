@@ -24,4 +24,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)chooseAnswerA:(id)sender {
+}
+
+- (IBAction)chooseAnswerB:(id)sender {
+}
+- (IBAction)wewfewf:(id)sender {
+}
 @end
