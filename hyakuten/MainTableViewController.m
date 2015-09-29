@@ -36,7 +36,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // TODO This should be dynamic
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -47,9 +47,6 @@
             rows = 3;
             break;
         case 1:
-            rows = 3;
-            break;
-        case 2:
             rows = 3;
             break;
         default:
