@@ -15,6 +15,8 @@
 		3842EABC1BB5546500B5F1D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3842EABA1BB5546500B5F1D4 /* LaunchScreen.storyboard */; };
 		3842EAC71BB5546500B5F1D4 /* hyakutenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAC61BB5546500B5F1D4 /* hyakutenTests.m */; };
 		3842EAD21BB5546500B5F1D4 /* hyakutenUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */; };
+		38CEA2C01BBAC12700333E73 /* hyakuten.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38CEA2BE1BBAC12700333E73 /* hyakuten.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		38CEA2C21BBAC24A00333E73 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CEA2C11BBAC24A00333E73 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		3842EACD1BB5546500B5F1D4 /* hyakutenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hyakutenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hyakutenUITests.m; sourceTree = "<group>"; };
 		3842EAD31BB5546500B5F1D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38CEA2BF1BBAC12700333E73 /* hyakuten.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hyakuten.xcdatamodel; sourceTree = "<group>"; };
+		38CEA2C11BBAC24A00333E73 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38CEA2C21BBAC24A00333E73 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,7 @@
 		3842EAA01BB5546500B5F1D4 = {
 			isa = PBXGroup;
 			children = (
+				38CEA2C11BBAC24A00333E73 /* CoreData.framework */,
 				3842EAAB1BB5546500B5F1D4 /* hyakuten */,
 				3842EAC51BB5546500B5F1D4 /* hyakutenTests */,
 				3842EAD01BB5546500B5F1D4 /* hyakutenUITests */,
@@ -151,6 +157,7 @@
 			children = (
 				3842EABD1BB5546500B5F1D4 /* Info.plist */,
 				3842EAB51BB5546500B5F1D4 /* Main.storyboard */,
+				38CEA2BE1BBAC12700333E73 /* hyakuten.xcdatamodeld */,
 				3842EABA1BB5546500B5F1D4 /* LaunchScreen.storyboard */,
 			);
 			name = Views;
@@ -299,6 +306,7 @@
 			files = (
 				3842EAB41BB5546500B5F1D4 /* ViewController.m in Sources */,
 				3842EAB11BB5546500B5F1D4 /* AppDelegate.m in Sources */,
+				38CEA2C01BBAC12700333E73 /* hyakuten.xcdatamodeld in Sources */,
 				3842EAAE1BB5546500B5F1D4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,6 +554,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		38CEA2BE1BBAC12700333E73 /* hyakuten.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				38CEA2BF1BBAC12700333E73 /* hyakuten.xcdatamodel */,
+			);
+			currentVersion = 38CEA2BF1BBAC12700333E73 /* hyakuten.xcdatamodel */;
+			path = hyakuten.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3842EAA11BB5546500B5F1D4 /* Project object */;
 }
