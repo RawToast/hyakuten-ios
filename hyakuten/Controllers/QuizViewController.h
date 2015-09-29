@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface QuizViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *answerButtonA;
 @property (weak, nonatomic) IBOutlet UIButton *answerButtonB;

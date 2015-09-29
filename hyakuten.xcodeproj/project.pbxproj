@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		3842EAAE1BB5546500B5F1D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAAD1BB5546500B5F1D4 /* main.m */; };
 		3842EAB11BB5546500B5F1D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAB01BB5546500B5F1D4 /* AppDelegate.m */; };
-		3842EAB41BB5546500B5F1D4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAB31BB5546500B5F1D4 /* ViewController.m */; };
+		3842EAB41BB5546500B5F1D4 /* QuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAB31BB5546500B5F1D4 /* QuizViewController.m */; };
 		3842EAB71BB5546500B5F1D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3842EAB51BB5546500B5F1D4 /* Main.storyboard */; };
 		3842EAB91BB5546500B5F1D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3842EAB81BB5546500B5F1D4 /* Assets.xcassets */; };
 		3842EABC1BB5546500B5F1D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3842EABA1BB5546500B5F1D4 /* LaunchScreen.storyboard */; };
 		3842EAC71BB5546500B5F1D4 /* hyakutenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAC61BB5546500B5F1D4 /* hyakutenTests.m */; };
 		3842EAD21BB5546500B5F1D4 /* hyakutenUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */; };
+		3882479C1BBAC9BB00EF6E1C /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3882479B1BBAC9BB00EF6E1C /* MainTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		38CEA2C01BBAC12700333E73 /* hyakuten.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38CEA2BE1BBAC12700333E73 /* hyakuten.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		38CEA2C21BBAC24A00333E73 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CEA2C11BBAC24A00333E73 /* CoreData.framework */; };
 /* End PBXBuildFile section */
@@ -41,8 +42,8 @@
 		3842EAAD1BB5546500B5F1D4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3842EAAF1BB5546500B5F1D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3842EAB01BB5546500B5F1D4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3842EAB21BB5546500B5F1D4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Controllers/ViewController.h; sourceTree = "<group>"; };
-		3842EAB31BB5546500B5F1D4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Controllers/ViewController.m; sourceTree = "<group>"; };
+		3842EAB21BB5546500B5F1D4 /* QuizViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = QuizViewController.h; path = Controllers/QuizViewController.h; sourceTree = "<group>"; };
+		3842EAB31BB5546500B5F1D4 /* QuizViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = QuizViewController.m; path = Controllers/QuizViewController.m; sourceTree = "<group>"; };
 		3842EAB61BB5546500B5F1D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3842EAB81BB5546500B5F1D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3842EABB1BB5546500B5F1D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +54,8 @@
 		3842EACD1BB5546500B5F1D4 /* hyakutenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hyakutenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hyakutenUITests.m; sourceTree = "<group>"; };
 		3842EAD31BB5546500B5F1D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3882479A1BBAC9BB00EF6E1C /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
+		3882479B1BBAC9BB00EF6E1C /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
 		38CEA2BF1BBAC12700333E73 /* hyakuten.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hyakuten.xcdatamodel; sourceTree = "<group>"; };
 		38CEA2C11BBAC24A00333E73 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -146,8 +149,10 @@
 		3842EADF1BB5A8E200B5F1D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3842EAB21BB5546500B5F1D4 /* ViewController.h */,
-				3842EAB31BB5546500B5F1D4 /* ViewController.m */,
+				3842EAB21BB5546500B5F1D4 /* QuizViewController.h */,
+				3842EAB31BB5546500B5F1D4 /* QuizViewController.m */,
+				3882479A1BBAC9BB00EF6E1C /* MainTableViewController.h */,
+				3882479B1BBAC9BB00EF6E1C /* MainTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -304,9 +309,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3842EAB41BB5546500B5F1D4 /* ViewController.m in Sources */,
+				3842EAB41BB5546500B5F1D4 /* QuizViewController.m in Sources */,
 				3842EAB11BB5546500B5F1D4 /* AppDelegate.m in Sources */,
 				38CEA2C01BBAC12700333E73 /* hyakuten.xcdatamodeld in Sources */,
+				3882479C1BBAC9BB00EF6E1C /* MainTableViewController.m in Sources */,
 				3842EAAE1BB5546500B5F1D4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
