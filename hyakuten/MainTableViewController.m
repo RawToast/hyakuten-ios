@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    UIEdgeInsets inset = UIEdgeInsetsMake(10, 0, 0, 0);
+    self.tableView.contentInset = inset;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -33,7 +36,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // TODO This should be dynamic
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -46,11 +49,19 @@
         case 1:
             rows = 3;
             break;
+        case 2:
+            rows = 3;
+            break;
         default:
             break;
     }
     
     return rows;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 20;
 }
 
 /*
