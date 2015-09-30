@@ -7,6 +7,9 @@
 //
 
 #import "MainTableViewController.h"
+#import "QuizViewController.h"
+
+NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 @interface MainTableViewController ()
 
@@ -105,24 +108,25 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-*/
- -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  {
     // Here we should add some identifier details, or use sender
-    UITableView *view =  (UITableView*)[self view];
-    UITableViewCell *tableCell = [view cellForRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"NavigateToQuiz" sender:tableCell];
+    // UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"NavigateToQuizView"
+                              sender:self.tableView];
  }
 
 /*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString: NAVIGATE_TO_QUIZ_SEGUE]) {
+        // Consider passing object context here
+        //QuizViewController *controller = [segue destinationViewController];
+        //controller.mode = managedObjectContext;
+    }
+}*/
 
 @end

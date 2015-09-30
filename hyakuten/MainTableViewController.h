@@ -10,4 +10,6 @@
 
 @interface MainTableViewController : UITableViewController
 
+extern NSString *const NAVIGATE_TO_QUIZ_SEGUE;
+
 @end
