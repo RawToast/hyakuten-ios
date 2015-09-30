@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		383EE0AA1BBC2484004F15E2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 383EE0A91BBC2484004F15E2 /* SettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3842EAAE1BB5546500B5F1D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAAD1BB5546500B5F1D4 /* main.m */; };
 		3842EAB11BB5546500B5F1D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAB01BB5546500B5F1D4 /* AppDelegate.m */; };
 		3842EAB41BB5546500B5F1D4 /* QuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAB31BB5546500B5F1D4 /* QuizViewController.m */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		383EE0A81BBC2484004F15E2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controllers/SettingsViewController.h; sourceTree = "<group>"; };
+		383EE0A91BBC2484004F15E2 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controllers/SettingsViewController.m; sourceTree = "<group>"; };
 		3842EAA91BB5546500B5F1D4 /* hyakuten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hyakuten.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3842EAAD1BB5546500B5F1D4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3842EAAF1BB5546500B5F1D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 		3842EADF1BB5A8E200B5F1D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				383EE0A81BBC2484004F15E2 /* SettingsViewController.h */,
+				383EE0A91BBC2484004F15E2 /* SettingsViewController.m */,
 				3842EAB21BB5546500B5F1D4 /* QuizViewController.h */,
 				3842EAB31BB5546500B5F1D4 /* QuizViewController.m */,
 				3882479A1BBAC9BB00EF6E1C /* MainTableViewController.h */,
@@ -371,6 +376,7 @@
 				3842EAB41BB5546500B5F1D4 /* QuizViewController.m in Sources */,
 				3842EAB11BB5546500B5F1D4 /* AppDelegate.m in Sources */,
 				38CEA2C01BBAC12700333E73 /* hyakuten.xcdatamodeld in Sources */,
+				383EE0AA1BBC2484004F15E2 /* SettingsViewController.m in Sources */,
 				3882479C1BBAC9BB00EF6E1C /* MainTableViewController.m in Sources */,
 				3842EAAE1BB5546500B5F1D4 /* main.m in Sources */,
 			);
