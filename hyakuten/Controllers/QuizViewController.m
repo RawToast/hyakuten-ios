@@ -14,7 +14,7 @@
 
 @implementation QuizViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad { 
     [super viewDidLoad];
 }
 
