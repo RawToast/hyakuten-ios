@@ -44,14 +44,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		380782CC1BBD72F500CDEA2B /* Question+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Question+CoreDataProperties.h"; sourceTree = "<group>"; };
-		380782CD1BBD72F500CDEA2B /* Question+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Question+CoreDataProperties.m"; sourceTree = "<group>"; };
-		380782CE1BBD72F500CDEA2B /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
-		380782CF1BBD72F500CDEA2B /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
-		380782D01BBD72F500CDEA2B /* Quiz+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Quiz+CoreDataProperties.h"; sourceTree = "<group>"; };
-		380782D11BBD72F500CDEA2B /* Quiz+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Quiz+CoreDataProperties.m"; sourceTree = "<group>"; };
-		380782D21BBD72F500CDEA2B /* Quiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quiz.h; sourceTree = "<group>"; };
-		380782D31BBD72F500CDEA2B /* Quiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quiz.m; sourceTree = "<group>"; };
+		380782CC1BBD72F500CDEA2B /* Question+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Question+CoreDataProperties.h"; path = "Model/Question+CoreDataProperties.h"; sourceTree = "<group>"; };
+		380782CD1BBD72F500CDEA2B /* Question+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Question+CoreDataProperties.m"; path = "Model/Question+CoreDataProperties.m"; sourceTree = "<group>"; };
+		380782CE1BBD72F500CDEA2B /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Question.h; path = Model/Question.h; sourceTree = "<group>"; };
+		380782CF1BBD72F500CDEA2B /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Question.m; path = Model/Question.m; sourceTree = "<group>"; };
+		380782D01BBD72F500CDEA2B /* Quiz+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Quiz+CoreDataProperties.h"; path = "Model/Quiz+CoreDataProperties.h"; sourceTree = "<group>"; };
+		380782D11BBD72F500CDEA2B /* Quiz+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Quiz+CoreDataProperties.m"; path = "Model/Quiz+CoreDataProperties.m"; sourceTree = "<group>"; };
+		380782D21BBD72F500CDEA2B /* Quiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Quiz.h; path = Model/Quiz.h; sourceTree = "<group>"; };
+		380782D31BBD72F500CDEA2B /* Quiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Quiz.m; path = Model/Quiz.m; sourceTree = "<group>"; };
 		383EE0A81BBC2484004F15E2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controllers/SettingsViewController.h; sourceTree = "<group>"; };
 		383EE0A91BBC2484004F15E2 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controllers/SettingsViewController.m; sourceTree = "<group>"; };
 		3842EAA91BB5546500B5F1D4 /* hyakuten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hyakuten.app; sourceTree = BUILT_PRODUCTS_DIR; };
