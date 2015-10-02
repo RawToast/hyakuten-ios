@@ -14,6 +14,7 @@
 		380782E21BBD860D00CDEA2B /* AnswerGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 380782E11BBD860D00CDEA2B /* AnswerGenerator.m */; settings = {ASSET_TAGS = (); }; };
 		380782E81BBD8F3900CDEA2B /* HType.m in Sources */ = {isa = PBXBuildFile; fileRef = 380782E71BBD8F3900CDEA2B /* HType.m */; settings = {ASSET_TAGS = (); }; };
 		380782EB1BBD971F00CDEA2B /* AnswerGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380782EA1BBD971F00CDEA2B /* AnswerGeneratorTest.swift */; settings = {ASSET_TAGS = (); }; };
+		383B06AF1BBEC7E10042A774 /* libFontAwesomeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 383B06AE1BBEC7E10042A774 /* libFontAwesomeKit.a */; };
 		383EE0AA1BBC2484004F15E2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 383EE0A91BBC2484004F15E2 /* SettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3842EAAE1BB5546500B5F1D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAAD1BB5546500B5F1D4 /* main.m */; };
 		3842EAB11BB5546500B5F1D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAB01BB5546500B5F1D4 /* AppDelegate.m */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		380635321BBEC470009AD1AF /* libFontAwesomeKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFontAwesomeKit.a; path = "Pods/../build/Debug-iphoneos/libFontAwesomeKit.a"; sourceTree = "<group>"; };
 		380782CC1BBD72F500CDEA2B /* Question+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Question+CoreDataProperties.h"; path = "Model/Question+CoreDataProperties.h"; sourceTree = "<group>"; };
 		380782CD1BBD72F500CDEA2B /* Question+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Question+CoreDataProperties.m"; path = "Model/Question+CoreDataProperties.m"; sourceTree = "<group>"; };
 		380782CE1BBD72F500CDEA2B /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Question.h; path = Model/Question.h; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		380782E71BBD8F3900CDEA2B /* HType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HType.m; path = hyakuten/Model/HType.m; sourceTree = "<group>"; };
 		380782E91BBD971F00CDEA2B /* hyakutenTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hyakutenTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		380782EA1BBD971F00CDEA2B /* AnswerGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGeneratorTest.swift; sourceTree = "<group>"; };
+		383B06AE1BBEC7E10042A774 /* libFontAwesomeKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFontAwesomeKit.a; path = "Pods/../build/Debug-iphoneos/libFontAwesomeKit.a"; sourceTree = "<group>"; };
 		383EE0A81BBC2484004F15E2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controllers/SettingsViewController.h; sourceTree = "<group>"; };
 		383EE0A91BBC2484004F15E2 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controllers/SettingsViewController.m; sourceTree = "<group>"; };
 		3842EAA91BB5546500B5F1D4 /* hyakuten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hyakuten.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				383B06AF1BBEC7E10042A774 /* libFontAwesomeKit.a in Frameworks */,
 				38CEA2C21BBAC24A00333E73 /* CoreData.framework in Frameworks */,
 				EDB251D5836324AB11AC0F1E /* libPods.a in Frameworks */,
 			);
@@ -270,6 +274,8 @@
 		4AA6686B91869700A019EE47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				383B06AE1BBEC7E10042A774 /* libFontAwesomeKit.a */,
+				380635321BBEC470009AD1AF /* libFontAwesomeKit.a */,
 				893DE68ACDA97C5A6D7AEB02 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -605,10 +611,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = hyakuten/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.rawtoast.hyakuten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e1adb804-9b89-44a2-8989-3f2bac2e38ad";
 				SWIFT_OBJC_BRIDGING_HEADER = "hyakuten/hyakuten-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -620,10 +633,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = hyakuten/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.rawtoast.hyakuten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e1adb804-9b89-44a2-8989-3f2bac2e38ad";
 				SWIFT_OBJC_BRIDGING_HEADER = "hyakuten/hyakuten-Bridging-Header.h";
 			};
 			name = Release;
