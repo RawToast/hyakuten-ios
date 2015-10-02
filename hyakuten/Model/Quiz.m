@@ -7,7 +7,9 @@
 //
 
 #import "Quiz.h"
+#import "Question.h"
 
 @implementation Quiz
+
 
 @end

@@ -7,7 +7,20 @@
 //
 
 #import "Question.h"
+#import "AnswerGenerator.h"
 
 @implementation Question
+
++ (Question *) createQuestion:(NSManagedObjectContext *)moc {
+    Question *question = (Question *) [NSEntityDescription
+                                       insertNewObjectForEntityForName:@"Question"
+                                       inManagedObjectContext:moc];
+    
+    return question;
+}
+
+- (NSSet<NSString *>*) generateAnswers {    
+    return [ AnswerGenerator generateAnswersForQuestion: self];
+}
 
 @end

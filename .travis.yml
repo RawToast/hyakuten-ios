@@ -1,0 +1,5 @@
+language: objective-c
+xcode_project: hyakuten.xcodeproj
+xcode_scheme: hyakuten
+
+- xcodebuild clean build test -project hyakuten.xcodeproj -scheme hytakuten
