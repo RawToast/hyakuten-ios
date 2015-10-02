@@ -23,4 +23,8 @@
     return [ AnswerGenerator generateAnswersForQuestion: self];
 }
 
+- (BOOL) isCorrectAnswer:(NSString *)chosenAnswer {
+    return [self.answer isEqual: chosenAnswer];
+}
+
 @end

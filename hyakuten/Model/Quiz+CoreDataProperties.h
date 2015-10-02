@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *completionDate;
 @property (nullable, nonatomic, retain) NSNumber *highscore;
 @property (nullable, nonatomic, retain) NSSet<Question *> *questions;
+@property (nullable, nonatomic, retain) NSString *name;
+@property (nullable, nonatomic, retain) NSString *section;
 
 @end
 

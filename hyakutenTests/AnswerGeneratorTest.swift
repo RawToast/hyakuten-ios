@@ -26,8 +26,6 @@ class AnswerGeneratorTest: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        
-        
         let context = setUpInMemoryManagedObjectContext()
         
         let question = NSEntityDescription.insertNewObjectForEntityForName("Question", inManagedObjectContext: context) as! Question

@@ -17,6 +17,8 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 @implementation MainTableViewController
 
+@synthesize fetchResultsController = _fetchResultsController;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -38,25 +40,13 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // TODO This should be dynamic
-    return 2;
+    return [self.fetchResultsController sections].count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // This should also be dynamic
-    NSInteger rows = 0;
-    switch (section) {
-        case 0:
-            rows = 3;
-            break;
-        case 1:
-            rows = 3;
-            break;
-        default:
-            break;
-    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchResultsController sections] objectAtIndex:section];
     
-    return rows;
+    return [ sectionInfo numberOfObjects];
 }
 
 
@@ -128,5 +118,29 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
         //controller.mode = managedObjectContext;
     }
 }*/
+
+
+#pragma - NSFetchedResultsController
+
+-(NSFetchedResultsController *)fetchResultsController {
+    if (_fetchResultsController != nil) {
+        return _fetchResultsController;
+    }
+    
+    // Create fetch request
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quiz" inManagedObjectContext:self.moc];
+    [fetchRequest setEntity:entity];
+    
+    // Specify how the fetched objects should be sorted
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"section" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    
+    
+    _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.moc sectionNameKeyPath:@"section" cacheName:nil];
+    
+    return _fetchResultsController;
+}
+
 
 @end

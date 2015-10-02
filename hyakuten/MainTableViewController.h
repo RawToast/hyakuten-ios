@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @interface MainTableViewController : UITableViewController
 
 extern NSString *const NAVIGATE_TO_QUIZ_SEGUE;
 
+@property (nonatomic, strong) NSManagedObjectContext *moc;
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchResultsController;
 @end

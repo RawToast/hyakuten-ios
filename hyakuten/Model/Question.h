@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSSet<NSString *>*) generateAnswers;
 
+- (BOOL) isCorrectAnswer: (NSString*) chosenAnswer;
+
 @end
 
 NS_ASSUME_NONNULL_END
