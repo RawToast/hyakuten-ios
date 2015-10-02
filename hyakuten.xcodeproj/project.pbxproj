@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380635331BBEC470009AD1AF /* libFontAwesomeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 380635321BBEC470009AD1AF /* libFontAwesomeKit.a */; };
 		380782D41BBD72F500CDEA2B /* Question+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 380782CD1BBD72F500CDEA2B /* Question+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		380782D51BBD72F500CDEA2B /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 380782CF1BBD72F500CDEA2B /* Question.m */; settings = {ASSET_TAGS = (); }; };
 		380782D61BBD72F500CDEA2B /* Quiz+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 380782D11BBD72F500CDEA2B /* Quiz+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		380635321BBEC470009AD1AF /* libFontAwesomeKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFontAwesomeKit.a; path = "Pods/../build/Debug-iphoneos/libFontAwesomeKit.a"; sourceTree = "<group>"; };
 		380782CC1BBD72F500CDEA2B /* Question+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Question+CoreDataProperties.h"; path = "Model/Question+CoreDataProperties.h"; sourceTree = "<group>"; };
 		380782CD1BBD72F500CDEA2B /* Question+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Question+CoreDataProperties.m"; path = "Model/Question+CoreDataProperties.m"; sourceTree = "<group>"; };
 		380782CE1BBD72F500CDEA2B /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Question.h; path = Model/Question.h; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380635331BBEC470009AD1AF /* libFontAwesomeKit.a in Frameworks */,
 				38CEA2C21BBAC24A00333E73 /* CoreData.framework in Frameworks */,
 				EDB251D5836324AB11AC0F1E /* libPods.a in Frameworks */,
 			);
@@ -270,6 +273,7 @@
 		4AA6686B91869700A019EE47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				380635321BBEC470009AD1AF /* libFontAwesomeKit.a */,
 				893DE68ACDA97C5A6D7AEB02 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -608,6 +612,10 @@
 				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = hyakuten/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.rawtoast.hyakuten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e1adb804-9b89-44a2-8989-3f2bac2e38ad";
@@ -625,6 +633,10 @@
 				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = hyakuten/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.rawtoast.hyakuten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e1adb804-9b89-44a2-8989-3f2bac2e38ad";
