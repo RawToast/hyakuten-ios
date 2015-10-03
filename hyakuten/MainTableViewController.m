@@ -8,6 +8,7 @@
 
 #import "MainTableViewController.h"
 #import "QuizViewController.h"
+#import "Quiz.h"
 
 NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
@@ -24,10 +25,11 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
     UIEdgeInsets inset = UIEdgeInsetsMake(10, 0, 0, 0);
     self.tableView.contentInset = inset;
-    
+
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -45,7 +47,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchResultsController sections] objectAtIndex:section];
-    
+
     return [ sectionInfo numberOfObjects];
 }
 
@@ -54,23 +56,20 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
     return 20;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"quizCell" forIndexPath:indexPath];
+
+    // The results need sorting in the resultsController
+    Quiz *quiz = [ self.fetchResultsController objectAtIndexPath: indexPath];
     
-    // Configure the cell...
-    
+    cell.textLabel.text = quiz.name;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+
 
 /*
 // Override to support editing the table view.
@@ -80,21 +79,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    }
 }
 */
 
@@ -104,7 +89,10 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  {
     // Here we should add some identifier details, or use sender
-    // UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
+     UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
+
+     // Need to pass values from the cell, e.g. questions
+
     [self performSegueWithIdentifier:@"NavigateToQuizView"
                               sender:self.tableView];
  }
@@ -126,19 +114,19 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
     if (_fetchResultsController != nil) {
         return _fetchResultsController;
     }
-    
+
     // Create fetch request
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quiz" inManagedObjectContext:self.moc];
     [fetchRequest setEntity:entity];
-    
+
     // Specify how the fetched objects should be sorted
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"section" ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-    
-    
+
+
     _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.moc sectionNameKeyPath:@"section" cacheName:nil];
-    
+
     return _fetchResultsController;
 }
 
