@@ -19,5 +19,9 @@
 @dynamic name;
 @dynamic section;
 @dynamic questions;
+@dynamic information;
+@dynamic priority;
+@dynamic url;
+@dynamic videoId;
 
 @end

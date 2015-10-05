@@ -8,6 +8,15 @@
 
 #import "HStack.h"
 
-@implementation HStack
+@implementation NSMutableArray (HStack)
 
+-(void) push:(id) object{
+    [ self addObject:object];
+}
+
+-(id) pop {
+    id lastItem = [self lastObject];
+    [ self removeLastObject];
+    return lastItem;
+}
 @end

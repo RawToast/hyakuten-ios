@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSSet<Question *> *questions;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *section;
+@property (nonatomic, retain) NSNumber *priority;
+@property (nullable, nonatomic, retain) NSString *information;
+@property (nullable, nonatomic, retain) NSString *url;
+@property (nullable, nonatomic, retain) NSString *videoId;
 
 @end
 

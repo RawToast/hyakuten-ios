@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (Question *) createQuestion: (NSManagedObjectContext *) moc;
 
-- (NSSet<NSString *>*) generateAnswers;
+- (NSMutableArray *) generateAnswers;
 
 - (BOOL) isCorrectAnswer: (NSString*) chosenAnswer;
 

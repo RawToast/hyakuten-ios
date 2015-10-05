@@ -5,6 +5,7 @@
         <attribute name="closeBase" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="closeTense" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="closeType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="information" attributeType="String" defaultValueString="Question info" syncable="YES"/>
         <attribute name="sentence" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sentenceClosed" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="questions" inverseEntity="Quiz" syncable="YES"/>
@@ -13,12 +14,16 @@
         <attribute name="completed" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="completionDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="highscore" optional="YES" attributeType="Double" minValueString="0" maxValueString="100" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="information" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priority" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="section" attributeType="String" defaultValueString="Not Set" indexed="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="videoId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="quiz" inverseEntity="Question" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Question" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Quiz" positionX="-45" positionY="36" width="128" height="135"/>
+        <element name="Question" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Quiz" positionX="-45" positionY="36" width="128" height="195"/>
     </elements>
 </model>

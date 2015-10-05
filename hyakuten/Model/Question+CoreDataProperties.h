@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *closeBase;
 @property (nullable, nonatomic, retain) NSString *closeTense;
 @property (nullable, nonatomic, retain) NSManagedObject *quiz;
+@property (nullable, nonatomic, retain) NSString *information;
 
 @end
 

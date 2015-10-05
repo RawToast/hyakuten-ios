@@ -11,21 +11,22 @@
 #import "Question.h"
 
 @interface Quiz()
-@property HStack *_questions;
+
 @end
 
 @implementation Quiz
+NSMutableArray *questionStack;
 
 + (Quiz*) createQuiz:(NSManagedObjectContext *) moc {
     return (Quiz*) [ NSEntityDescription insertNewObjectForEntityForName:@"Quiz" inManagedObjectContext:moc];
 }
 
 - (Question *) nextQuestion {
-    if (self._questions == nil) {
-        self._questions = [[HStack alloc] initWithArray: [self.questions allObjects] copyItems:YES];
+    if (questionStack == nil) {
+        questionStack = [[NSMutableArray alloc] initWithArray: [self.questions allObjects] copyItems:YES];
     }
     
-    Question *question = [self._questions pop ];
+    Question *question = [questionStack pop ];
     
     return question;
 }

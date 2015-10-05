@@ -1,3 +1,3 @@
 platform :ios, '8.0'
 
-pod "FontAwesomeKit", "~> 2.1.0"
+pod "YouTube-Player-iOS-Helper", "~> 0.1"

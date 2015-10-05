@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Question.h"
 
-@interface HStack : NSMutableArray
+@interface NSMutableArray (StackExtension)
 
--(void) push:(Question*) object;
+- (void) push: (id) question;
 
--(Question *) pop;
+- (id) pop;
 
 @end
