@@ -14,7 +14,6 @@
 NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 @interface MainTableViewController ()
-@property Quiz *selectedQuiz;
 @end
 
 @implementation MainTableViewController
