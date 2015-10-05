@@ -7,6 +7,7 @@
 //
 
 #import "QuizViewController.h"
+#import "Question.h"
 
 @interface QuizViewController ()
 
@@ -16,6 +17,15 @@
 
 - (void)viewDidLoad { 
     [super viewDidLoad];
+    
+    if (self.quiz == nil) {
+        NSLog(@"Navigated to the quiz view with no quiz data!");
+        abort();
+    }
+    
+    Question *question = [self.quiz.questions anyObject];
+    self.quizLabel.text = self.quiz.name;
+    [self.answerButtonA setTitle:question.answer forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

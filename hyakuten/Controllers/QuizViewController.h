@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Quiz.h"
 
 @interface QuizViewController : UIViewController
 
+@property (strong, nonatomic) NSManagedObjectContext *moc;
+
+@property (strong, nonatomic) Quiz *quiz;
+@property (weak, nonatomic) IBOutlet UILabel *quizLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *shownQuestion;
 @property (weak, nonatomic) IBOutlet UIButton *answerButtonA;
 @property (weak, nonatomic) IBOutlet UIButton *answerButtonB;
 @property (weak, nonatomic) IBOutlet UIButton *answerButtonC;

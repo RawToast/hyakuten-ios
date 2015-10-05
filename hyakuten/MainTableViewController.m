@@ -8,26 +8,35 @@
 
 #import "MainTableViewController.h"
 #import "QuizViewController.h"
+#import "QuizSelectionTableView.h"
+#import "Quiz.h"
 
 NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 @interface MainTableViewController ()
-
+@property Quiz *selectedQuiz;
 @end
 
 @implementation MainTableViewController
 
+@synthesize fetchResultsController = _fetchResultsController;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
     UIEdgeInsets inset = UIEdgeInsetsMake(10, 0, 0, 0);
     self.tableView.contentInset = inset;
+    NSError *error = nil;
+    if (![[self fetchResultsController] performFetch: &error]) {
     
+        NSLog(@"Error fetching core data %@", error);
+        abort();
+    }
+
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,25 +47,19 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // TODO This should be dynamic
-    return 2;
+    NSUInteger sectionCount = [self.fetchResultsController sections].count;
+    NSLog(@"Found %i sections in table view", sectionCount);
+    return sectionCount;
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // This should also be dynamic
-    NSInteger rows = 0;
-    switch (section) {
-        case 0:
-            rows = 3;
-            break;
-        case 1:
-            rows = 3;
-            break;
-        default:
-            break;
-    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchResultsController sections] objectAtIndex:section];
+    NSInteger numberOfObjects = [ sectionInfo numberOfObjects];
     
-    return rows;
+    NSLog(@"Returning numberOfRowsInSection as %i, for section %i", numberOfObjects, section);
+    return numberOfObjects;
 }
 
 
@@ -64,23 +67,38 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
     return 20;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Getting table cell for indexPath %@", indexPath);
     
-    // Configure the cell...
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
+    if (cell == nil) {
+        NSLog(@"Manually creating the cell");
+        cell = [[UITableViewCell alloc] init];
+    }
+    
+
+    // The results need sorting in the resultsController
+    Quiz *quiz = [ self.fetchResultsController objectAtIndexPath: indexPath];
+    
+    cell.textLabel.text = quiz.name;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    NSLog(@"Returning table cell with title %@",
+          quiz.name);
+
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    // Believe this should not be using *name
+    NSLog(@"Fetching header for section");
+    NSString *sectionTitle = [[[self.fetchResultsController sections]objectAtIndex:section] name];
+    NSLog(@"Title for header in section %i is %@", section, sectionTitle);
+    return sectionTitle;
 }
-*/
+
+
 
 /*
 // Override to support editing the table view.
@@ -90,21 +108,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    }
 }
 */
 
@@ -113,20 +117,85 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  {
-    // Here we should add some identifier details, or use sender
-    // UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"NavigateToQuizView"
-                              sender:self.tableView];
+     NSLog(@"Didselect row at index path %@", indexPath);
+     // Here we should add some identifier details, or use sender
+     //UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
+     
+     
+     Quiz *quiz = [ self.fetchResultsController objectAtIndexPath: indexPath];
+     NSLog(@"Fetched Quiz %@ with %i questions", quiz.name, [quiz questions].count);
+     
+     // Need to pass values from the cell, e.g. questions
+     
+     //self.selectedQuiz = quiz;
+     
+     [self performSegueWithIdentifier:NAVIGATE_TO_QUIZ_SEGUE
+                              sender: quiz];
  }
 
-/*
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString: NAVIGATE_TO_QUIZ_SEGUE]) {
         // Consider passing object context here
-        //QuizViewController *controller = [segue destinationViewController];
-        //controller.mode = managedObjectContext;
+        QuizViewController *controller = [segue destinationViewController];
+        controller.moc = self.moc;
+        controller.quiz = (Quiz*) sender;
+        NSLog(@"Passed moc to QuizViewController");
     }
-}*/
+}
+
+
+#pragma - NSFetchedResultsController
+
+-(NSFetchedResultsController *)fetchResultsController {
+    NSLog(@"Fetched results controller requested");
+    if (_fetchResultsController != nil) {
+        return _fetchResultsController;
+    }
+
+    // Create fetch request
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quiz" inManagedObjectContext:self.moc];
+    [fetchRequest setEntity:entity];
+
+    // Specify how the fetched objects should be sorted
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+
+
+    // Remove this line
+    fetchRequest.returnsObjectsAsFaults = NO;
+    
+    _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                  managedObjectContext:self.moc
+                                                                    sectionNameKeyPath:@"section"
+                                                                             cacheName:nil];
+    
+    _fetchResultsController.delegate = self;
+    
+    NSError *error = nil;
+    NSArray *result = [self.moc executeFetchRequest: fetchRequest
+                                              error: &error];
+    
+    if (error) {
+        NSLog(@"Unable to execute fetch request.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+        
+    } else {
+        NSLog(@"%@", result);
+    }
+    
+
+    return _fetchResultsController;
+}
+
+-(void) controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+-(void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
+}
+
 
 @end

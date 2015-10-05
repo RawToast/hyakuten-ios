@@ -11,8 +11,6 @@
 
 @implementation AnswerGenerator
 
-
-
 +(NSSet <NSString*>*) generateAnswersForQuestion:(Question *)question {
     
     NSCountedSet <NSString*> *answers = [[NSCountedSet alloc] initWithObjects: question.answer, nil];
@@ -29,12 +27,19 @@
 
 +(void) generateParticleAnswers: (NSCountedSet<NSString*>*) answers {
     
-    NSMutableSet <NSString*> *validParticles = [[NSMutableSet alloc] initWithObjects: @"は", @"が", @"を", @"の", @"に", @"へ", nil];
-    while (answers.count < 4) {
-         NSArray *particles = [ validParticles allObjects];
-
-        [answers addObject: [ particles objectAtIndex: arc4random_uniform(particles.count - 1)]];
+    NSMutableArray <NSString*> *validParticles =
+        [[NSMutableArray alloc] initWithObjects: @"は", @"が", @"を", @"の", @"に", @"へ", nil];
+    
+    for (NSUInteger i = validParticles.count - 1; i > 0; i--) {
+        [validParticles exchangeObjectAtIndex:i
+                            withObjectAtIndex:arc4random_uniform((u_int32_t)i + 1)];
     }
+    
+
+    for (int i = 0; i < 4; i++) {
+        [ answers addObject: [validParticles objectAtIndex:i]];
+    }
+
 }
 
 @end

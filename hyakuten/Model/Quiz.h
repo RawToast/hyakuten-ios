@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) markAsComplete;
 
+- (Question*) nextQuestion;
+
 @end
 
 NS_ASSUME_NONNULL_END

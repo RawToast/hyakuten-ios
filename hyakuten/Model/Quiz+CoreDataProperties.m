@@ -16,6 +16,8 @@
 @dynamic completed;
 @dynamic completionDate;
 @dynamic highscore;
+@dynamic name;
+@dynamic section;
 @dynamic questions;
 
 @end
