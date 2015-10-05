@@ -23,15 +23,19 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
     UIEdgeInsets inset = UIEdgeInsetsMake(10, 0, 0, 0);
     self.tableView.contentInset = inset;
+    NSError *error = nil;
+    if (![[self fetchResultsController] performFetch: &error]) {
+    
+        NSLog(@"Error fetching core data %@", error);
+        abort();
+    }
 
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,13 +46,19 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.fetchResultsController sections].count;
+    NSUInteger sectionCount = [self.fetchResultsController sections].count;
+    NSLog(@"Found %i sections in table view", sectionCount);
+    return sectionCount;
 }
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchResultsController sections] objectAtIndex:section];
-
-    return [ sectionInfo numberOfObjects];
+    NSInteger numberOfObjects = [ sectionInfo numberOfObjects];
+    
+    NSLog(@"Returning numberOfRowsInSection as %i, for section %i", numberOfObjects, section);
+    return numberOfObjects;
 }
 
 
@@ -56,17 +66,35 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
     return 20;
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"quizCell" forIndexPath:indexPath];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Getting table cell for indexPath %@", indexPath);
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (cell == nil) {
+        NSLog(@"Manually creating the cell");
+        cell = [[UITableViewCell alloc] init];
+    }
+    
 
     // The results need sorting in the resultsController
     Quiz *quiz = [ self.fetchResultsController objectAtIndexPath: indexPath];
     
     cell.textLabel.text = quiz.name;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    NSLog(@"Returning table cell with title %@",
+          quiz.name);
 
     return cell;
+}
+
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    // Believe this should not be using *name
+    NSLog(@"Fetching header for section");
+    NSString *sectionTitle = [[[self.fetchResultsController sections]objectAtIndex:section] name];
+    NSLog(@"Title for header in section %i is %@", section, sectionTitle);
+    return sectionTitle;
 }
 
 
@@ -88,6 +116,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  {
+     NSLog(@"Didselect row at index path %@", indexPath);
     // Here we should add some identifier details, or use sender
      UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
 
@@ -111,6 +140,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 #pragma - NSFetchedResultsController
 
 -(NSFetchedResultsController *)fetchResultsController {
+    NSLog(@"Fetched results controller requested");
     if (_fetchResultsController != nil) {
         return _fetchResultsController;
     }
@@ -121,13 +151,42 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
     [fetchRequest setEntity:entity];
 
     // Specify how the fetched objects should be sorted
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"section" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
 
 
-    _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.moc sectionNameKeyPath:@"section" cacheName:nil];
+    // Remove this line
+    fetchRequest.returnsObjectsAsFaults = NO;
+    
+    _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                  managedObjectContext:self.moc
+                                                                    sectionNameKeyPath:@"section"
+                                                                             cacheName:nil];
+    
+    _fetchResultsController.delegate = self;
+    
+    NSError *error = nil;
+    NSArray *result = [self.moc executeFetchRequest: fetchRequest
+                                              error: &error];
+    
+    if (error) {
+        NSLog(@"Unable to execute fetch request.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+        
+    } else {
+        NSLog(@"%@", result);
+    }
+    
 
     return _fetchResultsController;
+}
+
+-(void) controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+-(void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
 }
 
 

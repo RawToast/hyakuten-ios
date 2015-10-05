@@ -10,6 +10,7 @@
 #import "Quiz.h"
 #import "Question.h"
 #import "HType.h"
+#import "MainTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,8 +27,8 @@
     Quiz *quiz = [ Quiz createQuiz:self.managedObjectContext];
     
     quiz.completed = [ NSNumber numberWithBool:NO];
-    quiz.section = @"Basic Grammar";
-    quiz.name = @"Basic Particles";
+    quiz.section = @"Adv Grammar";
+    quiz.name = @"Adv Particles";
     
     Question *q1 = [ Question createQuestion:self.managedObjectContext];
     
@@ -50,22 +51,12 @@
      
     [ self saveContext];
     */
-    // Fetch
-    NSError *error = nil;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quiz" inManagedObjectContext:self.managedObjectContext];
-    [ fetchRequest setEntity:entity];
     
-    NSArray *result = [self.managedObjectContext executeFetchRequest: fetchRequest
-                                                               error: &error];
+    UIViewController *rootViewController = (UIViewController*) self.window.rootViewController;
+    NSArray<UIViewController*>* views = [ rootViewController childViewControllers];
+    MainTableViewController *tableView = (MainTableViewController*) [ views objectAtIndex:0];
     
-    if (error) {
-        NSLog(@"Unable to execute fetch request.");
-        NSLog(@"%@, %@", error, error.localizedDescription);
-        
-    } else {
-        NSLog(@"%@", result);
-    }
+    tableView.moc= self.managedObjectContext;
     
     return YES;
 }

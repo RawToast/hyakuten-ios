@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface MainTableViewController : UITableViewController
+@interface MainTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 extern NSString *const NAVIGATE_TO_QUIZ_SEGUE;
 
