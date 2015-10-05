@@ -7,12 +7,27 @@
 //
 
 #import "Quiz.h"
+#import "HStack.h"
 #import "Question.h"
+
+@interface Quiz()
+@property HStack *_questions;
+@end
 
 @implementation Quiz
 
 + (Quiz*) createQuiz:(NSManagedObjectContext *) moc {
     return (Quiz*) [ NSEntityDescription insertNewObjectForEntityForName:@"Quiz" inManagedObjectContext:moc];
+}
+
+- (Question *) nextQuestion {
+    if (self._questions == nil) {
+        self._questions = [[HStack alloc] initWithArray: [self.questions allObjects] copyItems:YES];
+    }
+    
+    Question *question = [self._questions pop ];
+    
+    return question;
 }
 
 - (void) addQuestion:(Question *) question {

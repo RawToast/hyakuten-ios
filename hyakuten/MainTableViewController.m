@@ -8,12 +8,13 @@
 
 #import "MainTableViewController.h"
 #import "QuizViewController.h"
+#import "QuizSelectionTableView.h"
 #import "Quiz.h"
 
 NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 @interface MainTableViewController ()
-
+@property Quiz *selectedQuiz;
 @end
 
 @implementation MainTableViewController
@@ -117,24 +118,31 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  {
      NSLog(@"Didselect row at index path %@", indexPath);
-    // Here we should add some identifier details, or use sender
-     UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
-
+     // Here we should add some identifier details, or use sender
+     //UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
+     
+     
+     Quiz *quiz = [ self.fetchResultsController objectAtIndexPath: indexPath];
+     NSLog(@"Fetched Quiz %@ with %i questions", quiz.name, [quiz questions].count);
+     
      // Need to pass values from the cell, e.g. questions
-
-    [self performSegueWithIdentifier:@"NavigateToQuizView"
-                              sender:self.tableView];
+     
+     //self.selectedQuiz = quiz;
+     
+     [self performSegueWithIdentifier:NAVIGATE_TO_QUIZ_SEGUE
+                              sender: quiz];
  }
 
-/*
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString: NAVIGATE_TO_QUIZ_SEGUE]) {
         // Consider passing object context here
-        //QuizViewController *controller = [segue destinationViewController];
-        //controller.mode = managedObjectContext;
+        QuizViewController *controller = [segue destinationViewController];
+        controller.moc = self.moc;
+        controller.quiz = (Quiz*) sender;
+        NSLog(@"Passed moc to QuizViewController");
     }
-}*/
+}
 
 
 #pragma - NSFetchedResultsController
