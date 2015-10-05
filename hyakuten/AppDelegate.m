@@ -27,17 +27,17 @@
     Quiz *quiz = [ Quiz createQuiz:self.managedObjectContext];
     
     quiz.completed = [ NSNumber numberWithBool:NO];
-    quiz.section = @"2. Essential Grammar";
-    quiz.name = @"Explanatory の";
-    quiz.information = @"The 「の」 particle attached at the end of the last clause of a sentence can also convey an explanatory tone to your sentence. For example, if someone asked you if you have time, you might respond, 'The thing is I'm kind of busy right now.' The abstract generic noun of 'the thing is...' can also be expressed with the 「の」 particle. This type of sentence has an embedded meaning that explains the reason(s) for something else.";
-    quiz.url = @"http://www.guidetojapanese.org/learn/grammar/nounparticles";
-    quiz.videoId = @"D7wRJug13d0";
+    quiz.section = @"Basic Grammar";
+    quiz.name = @"Basic Particles";
+    quiz.information = @"Particles are one or more Hiragana characters that attach to the end of a word to define the grammatical function of that word in the sentence. Using the correct particles is very important because the meaning of a sentence can completely change just by changing the particles. For example, the sentence 'Eat fish.' can become 'The fish eats.' simply by changing one particle.";
+    quiz.url = @"http://www.guidetojapanese.org/learn/grammar/particlesintro";
+    quiz.videoId = @"uZb5IOXBByQ";
     
     Question *q1 = [ Question createQuestion:self.managedObjectContext];
     
-    q1.answer = @"の";
-    q1.sentence = @"今は忙しいの";
-    q1.sentenceClosed = @"今は忙し_";
+    q1.answer = @"を";
+    q1.sentence = @"俺はビールを飲む";
+    q1.sentenceClosed = @"俺は＿を飲む";
     q1.closeType = PARTICLE;
     q1.information = @"Select the correct particle to fill in the blank";
     
@@ -45,17 +45,15 @@
     
     Question *q2 = [ Question createQuestion:self.managedObjectContext];
     
-    q2.answer = @"な";
-    q2.sentence = @"ボブなのだ";
-    q2.sentenceClosed = @"ボブ_のだ";
+    q2.answer = @"のが";
+    q2.sentence = @"僕はプログラミング言語を勉強するのが好きんだよ！";
+    q2.sentenceClosed = @"僕はプログラミング言語を勉強する＿好きんだよ！";
     q2.closeType = PARTICLE;
     q1.information = @"Select the correct particle to fill in the blank";
     q2.closeBase = nil;
     
     [ quiz addQuestion: q1];
     [ quiz addQuestion: q2];
-     
-    [ self saveContext];
     
     */
     UIViewController *rootViewController = (UIViewController*) self.window.rootViewController;
