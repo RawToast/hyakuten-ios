@@ -28,5 +28,7 @@
 - (IBAction)chooseAnswerC:(id)sender;
 - (IBAction)chooseAnswerD:(id)sender;
 
+- (double) calculateScore;
+
 @end
 

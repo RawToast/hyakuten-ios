@@ -25,6 +25,8 @@
     self.questionCount = 0;
     self.questionArray = [ self.quiz.questions allObjects];
 
+    NSLog(@"QuizManager loading quiz, with previous highscore %@", self.quiz.highscore);
+    
     return self;
 }
 
@@ -51,5 +53,10 @@
     short int counter = self.questionCount + 1;
     return counter >= self.questionArray.count;
 }
+
+-(void) updateWithScore:(NSNumber*) score {
+    self.quiz.highscore = score;
+}
+
 
 @end

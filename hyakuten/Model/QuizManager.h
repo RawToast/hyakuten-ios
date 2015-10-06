@@ -20,6 +20,8 @@
 
 -(Question*) previousQuestion;
 
+-(void) updateWithScore:(NSNumber*) score;
+
 -(BOOL) isLastQuestion;
 
 @end

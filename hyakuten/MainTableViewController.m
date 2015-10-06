@@ -32,10 +32,6 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
         NSLog(@"Error fetching core data %@", error);
         abort();
     }
-
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +53,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchResultsController sections] objectAtIndex:section];
     NSInteger numberOfObjects = [ sectionInfo numberOfObjects];
     
-    NSLog(@"Returning numberOfRowsInSection as %@, for section %i", @(numberOfObjects), section);
+    NSLog(@"Returning numberOfRowsInSection as %@, for section %li", @(numberOfObjects), (long)section);
     return numberOfObjects;
 }
 
@@ -122,7 +118,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
      
      
      Quiz *quiz = [ self.fetchResultsController objectAtIndexPath: indexPath];
-     NSLog(@"Fetched Quiz %@ with %i questions", quiz.name, [quiz questions].count);
+     NSLog(@"Fetched Quiz %@ with %lu questions", quiz.name, [quiz questions].count);
      
      // Need to pass values from the cell, e.g. questions
      
