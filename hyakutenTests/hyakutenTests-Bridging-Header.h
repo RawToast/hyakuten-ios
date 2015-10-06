@@ -6,3 +6,5 @@
 #import "HType.h"
 #import "Question.h"
 #import "Question+CoreDataProperties.h"
+#import "QuizViewController.h"
+#import "ScoreCalculator.h"

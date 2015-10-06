@@ -7,14 +7,21 @@
 //
 
 #import "QuizViewController.h"
+#import "MainTableViewController.h"
 #import "Question.h"
 #import "HStack.h"
 #import "QuizManager.h"
+#import "AlertControllerFactory.h"
+#import <Social/Social.h>
+#import "ScoreCalculator.h"
+
+NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
 
 @interface QuizViewController ()
     // Zero based, but incremented after posting each question. Resulting in a correct count.
     @property short int correctCount;
     @property QuizManager *quizManager;
+    @property short int score;
 @end
 
 @implementation QuizViewController
@@ -30,22 +37,18 @@
     [ self formatButtons];
     
     // Fetch first question
+    self.score = 0;
     self.quizManager = [[QuizManager alloc] initWithQuiz: self.quiz];
     Question *firstQuestion = [self.quizManager currentQuestion];
 
     [ self prepareViewForQuestion : firstQuestion];
 }
 
-- (void) moveToNextQuestionOrFinishQuiz {
-    if ([self.quizManager isLastQuestion]) {
-        // END QUIZ
-        NSLog(@"User reached end of the quiz");
-    } else {
-        NSLog(@"Moving to next question");
-        Question *question = [ self.quizManager nextQuestion];
-        [ self prepareViewForQuestion: question];
-    }
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
+
 
 - (void) prepareViewForQuestion: (Question *) question {
     NSMutableArray *answers = [question generateAnswers];
@@ -56,46 +59,122 @@
     self.questionInfo.text = @"Select the correct particle to fill in the blank"; //question.information;
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma Button controls
+#pragma Button control
 
 - (IBAction)chooseAnswerA:(id)sender {
-    if ( [self isCorrectAnswer:self.answerButtonA]) {
-        // Move on to next question
-        [ self moveToNextQuestionOrFinishQuiz];
-        
-    }
-    
+    [ self handleButtonPress: sender];
 }
 - (IBAction)chooseAnswerB:(id)sender {
-    if ( [self isCorrectAnswer:self.answerButtonB]) {
-        [ self moveToNextQuestionOrFinishQuiz];
-    }
+    [ self handleButtonPress: sender];
 }
 - (IBAction)chooseAnswerC:(id)sender {
-    if ( [self isCorrectAnswer:self.answerButtonC]) {
-        [ self moveToNextQuestionOrFinishQuiz];
-    }
+    [ self handleButtonPress: sender];
 }
 - (IBAction)chooseAnswerD:(id)sender {
-    if ( [self isCorrectAnswer:self.answerButtonD]) {
-        [ self moveToNextQuestionOrFinishQuiz];
-    }
+    [ self handleButtonPress: sender];
+}
+
+
+// Private methods
+- (void) handleButtonPress: (UIButton*) button {
+    [self isCorrectAnswer: button];
+    [self moveToNextQuestionOrFinishQuiz];
 }
 
 - (BOOL) isCorrectAnswer: (UIButton*)button {
     Question *question = [ self.quizManager currentQuestion ];
     BOOL result = [ question.answer isEqualToString: button.titleLabel.text];
     if (result) {
-        NSLog(@"User chose correct answer %@", question.answer);
+        self.score++;
+        NSLog(@"User chose correct answer %@, current score: %i", question.answer, self.score);
     }
     return result;
 }
+
+#pragma View flow
+
+- (void) moveToNextQuestionOrFinishQuiz {
+    if ([self.quizManager isLastQuestion]) {
+        NSLog(@"User reached end of the quiz");
+        BOOL showAlert = YES;
+        if ( [self perfectScore]) {
+            [self tweetScore];
+            showAlert = NO;
+        }
+        [ self endQuiz: showAlert];
+        
+    } else {
+        NSLog(@"Moving to next question");
+        Question *question = [ self.quizManager nextQuestion];
+        [ self prepareViewForQuestion: question];
+    }
+}
+
+- (BOOL) perfectScore {
+    short int totalQuestions = [ self.quiz.questions count ];
+    NSLog(@"User score was %i out of %i", self.score, totalQuestions);
+    return self.score == totalQuestions;
+}
+
+- (void) endQuiz: (BOOL) showAlert {
+    NSLog(@"Ending quiz %@", self.quiz.name);
+    
+    double finalScore = [ ScoreCalculator calculatePercentageScore:self.score
+                                                withTotalQuestions:self.quiz.questions.count];
+    
+    [ self.quizManager updateWithScore: [NSNumber numberWithDouble:finalScore]];
+    NSError *error = nil;
+    [ self.moc save:&error];
+    
+    // Show alternative finishing screen
+    if (showAlert){
+    NSString *message = [ NSString stringWithFormat:@"Quiz %@ completed, score: %.1f%%",
+                         self.quiz.name,
+                         finalScore];
+        [ self presentQuizFinishedAlert: message];
+    } else {
+        [self.navigationController popToRootViewControllerAnimated:YES];     }
+}
+
+-(void) presentQuizFinishedAlert: (NSString *) message {
+    
+    // End quiz modal
+    UIAlertController *endAlert = [UIAlertController alertControllerWithTitle:@"Quiz completed!"
+                                                                      message:message
+                                                               preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         [endAlert dismissViewControllerAnimated:YES completion:nil];
+                                                         [self.navigationController popToRootViewControllerAnimated:YES];
+                                                     }];
+    
+    [ endAlert addAction:okAction];
+    [ self presentViewController: endAlert animated:YES completion:nil];
+    
+}
+
+
+- (void) tweetScore {
+    // Check if user has twitter setup on device
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        // Create tweet modal
+        SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [tweetSheet setInitialText:[ NSString stringWithFormat:@"I aced %@ on #Hyakuten!", self.quiz.name]];
+        [self presentViewController:tweetSheet animated:YES completion:nil];
+    }
+    else
+    {
+        // Not setup account
+        UIAlertController *twitterAlert = [ AlertControllerFactory createOkAlertWithTitle:@"Sorry"
+                                                                               andMessage:@"You can't send a tweet right now, make your device has an internet connection and you have at least one Twitter account setup" ];
+        [ self presentViewController: twitterAlert animated:YES completion:nil];
+    }
+}
+
+#pragma Button formatting
 
 - (void) setAnswerButtons: (NSMutableArray *) answers {
     
