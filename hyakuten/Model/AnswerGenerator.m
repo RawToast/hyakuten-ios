@@ -8,27 +8,29 @@
 
 #import "AnswerGenerator.h"
 #import "HType.h"
+#import "HStack.h"
 
 @implementation AnswerGenerator
 
-+(NSSet <NSString*>*) generateAnswersForQuestion:(Question *)question {
++(NSMutableArray*) generateAnswersForQuestion:(Question *)question {
     
     NSCountedSet <NSString*> *answers = [[NSCountedSet alloc] initWithObjects: question.answer, nil];
 
-    if ( question.closeType == PARTICLE ){
+    if ( [ question.closeType containsString: PARTICLE]){
         [ self generateParticleAnswers: answers];
-    
     }
     
-    
-    return answers;
+    NSMutableArray *result = [[NSMutableArray alloc] initWithArray:[answers allObjects] copyItems:YES];
+    return result;
 }
 
 
 +(void) generateParticleAnswers: (NSCountedSet<NSString*>*) answers {
     
     NSMutableArray <NSString*> *validParticles =
-        [[NSMutableArray alloc] initWithObjects: @"は", @"が", @"を", @"の", @"に", @"へ", nil];
+        [[NSMutableArray alloc] initWithObjects: @"は", @"が", @"を", @"の",
+                                                @"に", @"のを", @"のが", @"こと",
+                                                @"と", @"ん", nil];
     
     for (NSUInteger i = validParticles.count - 1; i > 0; i--) {
         [validParticles exchangeObjectAtIndex:i
@@ -36,8 +38,8 @@
     }
     
 
-    for (int i = 0; i < 4; i++) {
-        [ answers addObject: [validParticles objectAtIndex:i]];
+    while (answers.count < 4) {
+        [ answers addObject: [validParticles pop]];
     }
 
 }

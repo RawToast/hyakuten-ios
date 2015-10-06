@@ -19,6 +19,7 @@
 @dynamic closeType;
 @dynamic closeBase;
 @dynamic closeTense;
+@dynamic information;
 @dynamic quiz;
 
 @end

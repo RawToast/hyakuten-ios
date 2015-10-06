@@ -19,7 +19,7 @@
     return question;
 }
 
-- (NSSet<NSString *>*) generateAnswers {    
+- (NSMutableArray *) generateAnswers {
     return [ AnswerGenerator generateAnswersForQuestion: self];
 }
 

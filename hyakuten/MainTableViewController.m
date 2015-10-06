@@ -14,7 +14,6 @@
 NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 @interface MainTableViewController ()
-@property Quiz *selectedQuiz;
 @end
 
 @implementation MainTableViewController
@@ -48,7 +47,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSUInteger sectionCount = [self.fetchResultsController sections].count;
-    NSLog(@"Found %i sections in table view", sectionCount);
+    NSLog(@"Found %@ sections in table view", @(sectionCount));
     return sectionCount;
 }
 
@@ -58,7 +57,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchResultsController sections] objectAtIndex:section];
     NSInteger numberOfObjects = [ sectionInfo numberOfObjects];
     
-    NSLog(@"Returning numberOfRowsInSection as %i, for section %i", numberOfObjects, section);
+    NSLog(@"Returning numberOfRowsInSection as %@, for section %i", @(numberOfObjects), section);
     return numberOfObjects;
 }
 
@@ -94,7 +93,7 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
     // Believe this should not be using *name
     NSLog(@"Fetching header for section");
     NSString *sectionTitle = [[[self.fetchResultsController sections]objectAtIndex:section] name];
-    NSLog(@"Title for header in section %i is %@", section, sectionTitle);
+    NSLog(@"Title for header in section %@ is %@", @(section), sectionTitle);
     return sectionTitle;
 }
 

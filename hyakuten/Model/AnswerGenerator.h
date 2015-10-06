@@ -11,6 +11,6 @@
 
 @interface AnswerGenerator : NSObject
 
-+ (NSSet<NSString *>*) generateAnswersForQuestion: (Question*) question;
++ (NSMutableArray*) generateAnswersForQuestion: (Question*) question;
 
 @end

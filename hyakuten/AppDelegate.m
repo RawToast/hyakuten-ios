@@ -11,6 +11,7 @@
 #import "Question.h"
 #import "HType.h"
 #import "MainTableViewController.h"
+#import "QuizDataLoader.h"
 
 @interface AppDelegate ()
 
@@ -23,35 +24,20 @@
     // Override point for customization after application launch.
     
     //Core data
-    /*
-    Quiz *quiz = [ Quiz createQuiz:self.managedObjectContext];
+    NSError *error = nil;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quiz" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSArray *results = [ self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
-    quiz.completed = [ NSNumber numberWithBool:NO];
-    quiz.section = @"Adv Grammar";
-    quiz.name = @"Adv Particles";
-    
-    Question *q1 = [ Question createQuestion:self.managedObjectContext];
-    
-    q1.answer = @"を";
-    q1.sentence = @"俺はビールを飲む";
-    q1.sentenceClosed = @"俺は＿を飲む";
-    q1.closeType = PARTICLE;
-    q1.closeBase = nil;
-    
-    Question *q2 = [ Question createQuestion:self.managedObjectContext];
-    
-    q2.answer = @"を";
-    q2.sentence = @"俺はビールを飲む";
-    q2.sentenceClosed = @"俺は＿を飲む";
-    q2.closeType = PARTICLE;
-    q2.closeBase = nil;
-    
-    [ quiz addQuestion: q1];
-    [ quiz addQuestion: q2];
-     
-    [ self saveContext];
-    */
-    
+    NSLog(@"Found quiz data. %@ question sets loaded", @(results.count));
+    if (results.count == 0) {
+        NSLog(@"No quiz data found, loading data...");
+        [QuizDataLoader generateQuizData: self.managedObjectContext];
+        NSLog(@"Data load complete");
+    }
+
+
     UIViewController *rootViewController = (UIViewController*) self.window.rootViewController;
     NSArray<UIViewController*>* views = [ rootViewController childViewControllers];
     MainTableViewController *tableView = (MainTableViewController*) [ views objectAtIndex:0];
