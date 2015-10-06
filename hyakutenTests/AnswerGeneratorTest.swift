@@ -40,7 +40,26 @@ class AnswerGeneratorTest: XCTestCase {
         XCTAssertTrue(answers.count == 4, String(format: "Recieved %d answers expected %d", actualSize,
                                                                                             expectedSize))
         
-        
+        XCTAssertTrue(answers.containsObject(question.answer!), "Correct answer not in set of answers");
     }
 
+    func testGeneratedAnswersContainsOriginalAnswer() {
+        
+        let context = setUpInMemoryManagedObjectContext()
+        
+        let question = NSEntityDescription.insertNewObjectForEntityForName("Question", inManagedObjectContext: context) as! Question
+        question.closeType = PARTICLE
+        question.answer = "のは"
+        
+        let answers = AnswerGenerator.generateAnswersForQuestion(question)
+        
+        // Assert size
+        let expectedSize = 4
+        let actualSize = answers.count
+        XCTAssertTrue(answers.count == 4, String(format: "Recieved %d answers expected %d", actualSize,
+            expectedSize))
+        
+        XCTAssertTrue(answers.containsObject(question.answer!), "Correct answer not in set of answers");
+    }
+    
 }

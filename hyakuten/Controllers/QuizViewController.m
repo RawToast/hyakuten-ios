@@ -29,15 +29,10 @@
     // Formatting
     [ self formatButtons];
     
-    
-    // Setup first question, question logic should be moved to a seperate class
+    // Fetch first question
     self.quizManager = [[QuizManager alloc] initWithQuiz: self.quiz];
     Question *firstQuestion = [self.quizManager currentQuestion];
 
-    // Format buttons
-    
-    NSMutableArray *answers = [firstQuestion generateAnswers];
-    [ self setAnswerButtons : answers];
     [ self prepareViewForQuestion : firstQuestion];
 }
 
@@ -53,6 +48,9 @@
 }
 
 - (void) prepareViewForQuestion: (Question *) question {
+    NSMutableArray *answers = [question generateAnswers];
+    [ self setAnswerButtons : answers];
+    
     self.quizLabel.text = self.quiz.name;
     self.shownQuestion.text = question.sentenceClosed;
     self.questionInfo.text = @"Select the correct particle to fill in the blank"; //question.information;

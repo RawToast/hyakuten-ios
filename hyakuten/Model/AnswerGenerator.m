@@ -28,7 +28,9 @@
 +(void) generateParticleAnswers: (NSCountedSet<NSString*>*) answers {
     
     NSMutableArray <NSString*> *validParticles =
-        [[NSMutableArray alloc] initWithObjects: @"は", @"が", @"を", @"の", @"に", @"へ", @"のを", @"のが", nil];
+        [[NSMutableArray alloc] initWithObjects: @"は", @"が", @"を", @"の",
+                                                @"に", @"のを", @"のが", @"こと",
+                                                @"と", @"ん", nil];
     
     for (NSUInteger i = validParticles.count - 1; i > 0; i--) {
         [validParticles exchangeObjectAtIndex:i

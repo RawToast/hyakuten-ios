@@ -11,6 +11,7 @@
 #import "Question.h"
 #import "HType.h"
 #import "MainTableViewController.h"
+#import "QuizDataLoader.h"
 
 @interface AppDelegate ()
 
@@ -23,39 +24,20 @@
     // Override point for customization after application launch.
     
     //Core data
-    /*
-    Quiz *quiz = [ Quiz createQuiz:self.managedObjectContext];
+    NSError *error = nil;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quiz" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSArray *results = [ self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
-    quiz.completed = [ NSNumber numberWithBool:NO];
-    quiz.section = @"Basic Grammar";
-    quiz.name = @"Basic Particles";
-    quiz.information = @"Particles are one or more Hiragana characters that attach to the end of a word to define the grammatical function of that word in the sentence. Using the correct particles is very important because the meaning of a sentence can completely change just by changing the particles. For example, the sentence 'Eat fish.' can become 'The fish eats.' simply by changing one particle.";
-    quiz.url = @"http://www.guidetojapanese.org/learn/grammar/particlesintro";
-    quiz.videoId = @"uZb5IOXBByQ";
-    
-    Question *q1 = [ Question createQuestion:self.managedObjectContext];
-    
-    q1.answer = @"を";
-    q1.sentence = @"俺はビールを飲む";
-    q1.sentenceClosed = @"俺は＿を飲む";
-    q1.closeType = PARTICLE;
-    q1.information = @"Select the correct particle to fill in the blank";
-    
-    q1.closeBase = nil;
-    
-    Question *q2 = [ Question createQuestion:self.managedObjectContext];
-    
-    q2.answer = @"のが";
-    q2.sentence = @"僕はプログラミング言語を勉強するのが好きんだよ！";
-    q2.sentenceClosed = @"僕はプログラミング言語を勉強する＿好きんだよ！";
-    q2.closeType = PARTICLE;
-    q1.information = @"Select the correct particle to fill in the blank";
-    q2.closeBase = nil;
-    
-    [ quiz addQuestion: q1];
-    [ quiz addQuestion: q2];
-    
-    */
+    NSLog(@"Found quiz data. %@ question sets loaded", @(results.count));
+    if (results.count == 0) {
+        NSLog(@"No quiz data found, loading data...");
+        [QuizDataLoader generateQuizData: self.managedObjectContext];
+        NSLog(@"Data load complete");
+    }
+
+
     UIViewController *rootViewController = (UIViewController*) self.window.rootViewController;
     NSArray<UIViewController*>* views = [ rootViewController childViewControllers];
     MainTableViewController *tableView = (MainTableViewController*) [ views objectAtIndex:0];

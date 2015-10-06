@@ -24,6 +24,7 @@
 		3842EAC71BB5546500B5F1D4 /* hyakutenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAC61BB5546500B5F1D4 /* hyakutenTests.m */; };
 		3842EAD21BB5546500B5F1D4 /* hyakutenUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */; };
 		386F3F731BC30AAB003020D5 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F3F721BC30AAB003020D5 /* QuizManager.m */; settings = {ASSET_TAGS = (); }; };
+		386F3F761BC3BADE003020D5 /* QuizDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F3F751BC3BADE003020D5 /* QuizDataLoader.m */; settings = {ASSET_TAGS = (); }; };
 		38703B111BBE8F7500C840E3 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 38703B101BBE8F7500C840E3 /* .travis.yml */; settings = {ASSET_TAGS = (); }; };
 		38703B121BBE8F7500C840E3 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 38703B101BBE8F7500C840E3 /* .travis.yml */; settings = {ASSET_TAGS = (); }; };
 		38703B131BBE8F7500C840E3 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 38703B101BBE8F7500C840E3 /* .travis.yml */; settings = {ASSET_TAGS = (); }; };
@@ -89,6 +90,8 @@
 		3842EAD31BB5546500B5F1D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		386F3F711BC30AAB003020D5 /* QuizManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizManager.h; path = hyakuten/Model/QuizManager.h; sourceTree = "<group>"; };
 		386F3F721BC30AAB003020D5 /* QuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuizManager.m; path = hyakuten/Model/QuizManager.m; sourceTree = "<group>"; };
+		386F3F741BC3BADE003020D5 /* QuizDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizDataLoader.h; path = hyakuten/Model/QuizDataLoader.h; sourceTree = "<group>"; };
+		386F3F751BC3BADE003020D5 /* QuizDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuizDataLoader.m; path = hyakuten/Model/QuizDataLoader.m; sourceTree = "<group>"; };
 		38703B101BBE8F7500C840E3 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		3882479A1BBAC9BB00EF6E1C /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
 		3882479B1BBAC9BB00EF6E1C /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 		380782DE1BBD83F500CDEA2B /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				386F3F741BC3BADE003020D5 /* QuizDataLoader.h */,
+				386F3F751BC3BADE003020D5 /* QuizDataLoader.m */,
 				380782E61BBD8F3900CDEA2B /* HType.h */,
 				380782E71BBD8F3900CDEA2B /* HType.m */,
 				380782E01BBD860D00CDEA2B /* AnswerGenerator.h */,
@@ -467,6 +472,7 @@
 				380782D71BBD72F500CDEA2B /* Quiz.m in Sources */,
 				3842EAB41BB5546500B5F1D4 /* QuizViewController.m in Sources */,
 				380782E21BBD860D00CDEA2B /* AnswerGenerator.m in Sources */,
+				386F3F761BC3BADE003020D5 /* QuizDataLoader.m in Sources */,
 				380782D61BBD72F500CDEA2B /* Quiz+CoreDataProperties.m in Sources */,
 				3842EAB11BB5546500B5F1D4 /* AppDelegate.m in Sources */,
 				38CEA2C01BBAC12700333E73 /* hyakuten.xcdatamodeld in Sources */,
