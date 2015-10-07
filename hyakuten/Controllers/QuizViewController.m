@@ -14,6 +14,7 @@
 #import "AlertControllerFactory.h"
 #import <Social/Social.h>
 #import "ScoreCalculator.h"
+#import "Settings.h"
 
 NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
 
@@ -157,20 +158,38 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
 
 
 - (void) tweetScore {
-    // Check if user has twitter setup on device
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
-    {
-        // Create tweet modal
-        SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [tweetSheet setInitialText:[ NSString stringWithFormat:@"I aced %@ on #Hyakuten!", self.quiz.name]];
-        [self presentViewController:tweetSheet animated:YES completion:nil];
-    }
-    else
-    {
-        // Not setup account
-        UIAlertController *twitterAlert = [ AlertControllerFactory createOkAlertWithTitle:@"Sorry"
-                                                                               andMessage:@"You can't send a tweet right now, make your device has an internet connection and you have at least one Twitter account setup" ];
-        [ self presentViewController: twitterAlert animated:YES completion:nil];
+    
+    NSNumber *tweet = [Settings fetchSettings:self.moc].tweetResults;
+    NSLog(@"%@", tweet);
+    
+    if ([tweet intValue] == 0) {
+        // Check if user has twitter setup on device
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+        {
+            SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            
+            // Tweet text building should be in another method
+            NSString *tweetText;
+            NSString *tweetSuffix = [ NSString stringWithFormat:@" %@ on #Hyakuten!", self.quiz.name];
+            
+            if ([ self perfectScore]){
+                tweetText = [Settings fetchSettings:self.moc].perfectScoreTweetText;
+            } else {
+                tweetText = [Settings fetchSettings:self.moc].highscoreTweetText;
+            }
+            
+            tweetText = [ tweetText stringByAppendingString: tweetSuffix];
+            [tweetSheet setInitialText: tweetText];
+
+            [self presentViewController:tweetSheet animated:YES completion:nil];
+        }
+        else
+        {
+            // Not setup account
+            UIAlertController *twitterAlert = [ AlertControllerFactory createOkAlertWithTitle:@"Sorry"
+                                                                                   andMessage:@"You can't send a tweet right now, make your device has an internet connection and you have at least one Twitter account setup" ];
+            [ self presentViewController: twitterAlert animated:YES completion:nil];
+        }
     }
 }
 

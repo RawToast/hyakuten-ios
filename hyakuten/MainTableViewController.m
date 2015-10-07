@@ -8,10 +8,12 @@
 
 #import "MainTableViewController.h"
 #import "QuizViewController.h"
+#import "SettingsViewController.h"
 #import "QuizSelectionTableView.h"
 #import "Quiz.h"
 
 NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
+NSString *const NAVIGATE_TO_SETTINGS_SEGUE = @"NavigateToSettings";
 
 @interface MainTableViewController ()
 @end
@@ -131,11 +133,15 @@ NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString: NAVIGATE_TO_QUIZ_SEGUE]) {
-        // Consider passing object context here
         QuizViewController *controller = [segue destinationViewController];
         controller.moc = self.moc;
         controller.quiz = (Quiz*) sender;
         NSLog(@"Passed moc to QuizViewController");
+    } else if ([[segue identifier] isEqualToString: NAVIGATE_TO_SETTINGS_SEGUE]) {
+        SettingsViewController *controller = [ segue destinationViewController];
+        controller.moc = self.moc;
+        NSLog(@"Passed moc to SettingsViewController");
+
     }
 }
 
