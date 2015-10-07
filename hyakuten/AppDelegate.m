@@ -10,6 +10,7 @@
 #import "Quiz.h"
 #import "Question.h"
 #import "HType.h"
+#import "Settings.h"
 #import "MainTableViewController.h"
 #import "QuizDataLoader.h"
 
@@ -36,8 +37,10 @@
         [QuizDataLoader generateQuizData: self.managedObjectContext];
         NSLog(@"Data load complete");
     }
-
-
+    
+    // Create settings singleton here.
+    [ self loadSettings];
+    
     UIViewController *rootViewController = (UIViewController*) self.window.rootViewController;
     NSArray<UIViewController*>* views = [ rootViewController childViewControllers];
     MainTableViewController *tableView = (MainTableViewController*) [ views objectAtIndex:0];
@@ -45,6 +48,10 @@
     tableView.moc= self.managedObjectContext;
     
     return YES;
+}
+
+- (Settings *) loadSettings {
+    return [ Settings fetchSettings: self.managedObjectContext];;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

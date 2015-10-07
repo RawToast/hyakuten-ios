@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Quiz.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Settings : NSManagedObject
 
-// Insert code here to declare functionality of your managed object subclass
++ (instancetype) fetchSettings:(NSManagedObjectContext *) moc;
+
+- (void) save;
 
 @end
 

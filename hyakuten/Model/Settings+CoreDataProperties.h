@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *tweetResults;
 @property (nullable, nonatomic, retain) NSNumber *lightTheme;
 @property (nullable, nonatomic, retain) NSNumber *autoPlayVideo;
+@property (nullable, nonatomic, retain) NSString *perfectScoreTweetText;
+@property (nullable, nonatomic, retain) NSString *highscoreTweetText;
+
 
 @end
 

@@ -12,9 +12,19 @@
 
 
 - (void) hideKeyboard;
+- (IBAction)clickedChangeVideoSettings:(id)sender;
+- (IBAction)changeTheme:(id)sender;
+- (IBAction)changeIfTweetEnabled:(id)sender;
+- (IBAction)setTweetTextForPerfectScore:(id)sender;
+- (IBAction)setTweetTextForHighscore:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *languageControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *autoPlayVideo;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *themeControl;
-@property (weak, nonatomic) IBOutlet UITextField *usernameField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+
+@property (weak, nonatomic) IBOutlet UITextField *perfectScoreTweetField;
+@property (weak, nonatomic) IBOutlet UITextField *highscoreTweetField;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tweetField;
+
+@property (strong, nonatomic) NSManagedObjectContext *moc;
+
 @end

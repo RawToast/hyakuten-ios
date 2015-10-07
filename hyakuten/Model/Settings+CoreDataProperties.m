@@ -16,5 +16,7 @@
 @dynamic tweetResults;
 @dynamic lightTheme;
 @dynamic autoPlayVideo;
+@dynamic perfectScoreTweetText;
+@dynamic highscoreTweetText;
 
 @end

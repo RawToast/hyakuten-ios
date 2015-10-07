@@ -128,7 +128,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oGx-dX-43q" id="pW5-JZ-ZTh">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -144,7 +144,7 @@
                     <navigationItem key="navigationItem" title="Main View" id="vLk-ux-f4N">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="9KX-Hv-2id">
                             <connections>
-                                <segue destination="QVI-BL-ZjJ" kind="show" id="LHz-Zi-T3V"/>
+                                <segue destination="QVI-BL-ZjJ" kind="show" identifier="NavigateToSettings" id="LHz-Zi-T3V"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -198,7 +198,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="YEj-Gt-JdE">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BS7-Wu-IkO">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Play Video" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BS7-Wu-IkO">
                                                             <rect key="frame" x="0.0" y="12" width="280" height="20"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -206,12 +206,15 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-fr-nvL">
-                                                            <rect key="frame" x="304" y="8" width="280" height="29"/>
+                                                            <rect key="frame" x="305" y="8" width="280" height="29"/>
                                                             <animations/>
                                                             <segments>
-                                                                <segment title="English"/>
-                                                                <segment title="日本語"/>
+                                                                <segment title="Yes"/>
+                                                                <segment title="No"/>
                                                             </segments>
+                                                            <connections>
+                                                                <action selector="clickedChangeVideoSettings:" destination="QVI-BL-ZjJ" eventType="valueChanged" id="WEW-IE-Hgx"/>
+                                                            </connections>
                                                         </segmentedControl>
                                                     </subviews>
                                                     <animations/>
@@ -254,6 +257,9 @@
                                                                 <segment title="Light"/>
                                                                 <segment title="Dark"/>
                                                             </segments>
+                                                            <connections>
+                                                                <action selector="changeTheme:" destination="QVI-BL-ZjJ" eventType="valueChanged" id="Ilc-pS-W4i"/>
+                                                            </connections>
                                                         </segmentedControl>
                                                     </subviews>
                                                     <animations/>
@@ -291,6 +297,9 @@
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="setTweetTextForPerfectScore:" destination="QVI-BL-ZjJ" eventType="editingDidEnd" id="emp-Py-KQr"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <animations/>
@@ -328,6 +337,9 @@
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="setTweetTextForHighscore:" destination="QVI-BL-ZjJ" eventType="editingDidEnd" id="5BB-H1-l4Q"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <animations/>
@@ -367,6 +379,9 @@
                                                                 <segment title="Yes"/>
                                                                 <segment title="No"/>
                                                             </segments>
+                                                            <connections>
+                                                                <action selector="changeIfTweetEnabled:" destination="QVI-BL-ZjJ" eventType="valueChanged" id="r1R-2Q-YU9"/>
+                                                            </connections>
                                                         </segmentedControl>
                                                     </subviews>
                                                     <animations/>
@@ -392,10 +407,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="I2w-tz-XdH"/>
                     <connections>
-                        <outlet property="languageControl" destination="Kaw-fr-nvL" id="2p6-me-KVT"/>
-                        <outlet property="passwordField" destination="FWM-CF-Gw8" id="Jtl-2U-Z8N"/>
+                        <outlet property="autoPlayVideo" destination="Kaw-fr-nvL" id="4cU-TW-d0q"/>
+                        <outlet property="highscoreTweetField" destination="FWM-CF-Gw8" id="xBj-bO-bjp"/>
+                        <outlet property="perfectScoreTweetField" destination="m3i-5H-B5r" id="7qh-Y7-k7H"/>
                         <outlet property="themeControl" destination="Su6-wX-gNq" id="uHc-ck-yBK"/>
-                        <outlet property="usernameField" destination="m3i-5H-B5r" id="fza-RO-gv8"/>
+                        <outlet property="tweetField" destination="qdM-Ml-Ott" id="B4x-g0-VEQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zp0-Jw-LjT" userLabel="First Responder" sceneMemberID="firstResponder"/>

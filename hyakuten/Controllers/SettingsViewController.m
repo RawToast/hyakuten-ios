@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "Settings.h"
 
 @interface SettingsViewController ()
 
@@ -15,20 +16,38 @@
 @implementation SettingsViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [ super viewDidLoad];
+    [ self loadSettings];
+    [ self configureTextFields];
+}
+
+- (void) loadSettings {
+    Settings *settings = [ Settings fetchSettings: self.moc];
+   
+    self.autoPlayVideo.selectedSegmentIndex = [ [settings autoPlayVideo] integerValue];
+    self.themeControl.selectedSegmentIndex = [ [settings lightTheme] integerValue];
+    self.tweetField.selectedSegmentIndex = [ [settings tweetResults] integerValue];
     
+    self.perfectScoreTweetField.text = settings.perfectScoreTweetText;
+    self.highscoreTweetField.text = settings.highscoreTweetText;
+    
+}
+
+
+- (void) configureTextFields {
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
                                           initWithTarget:self
                                           action:@selector(hideKeyboard)];
     [ self.view addGestureRecognizer: tapGesture];
-    self.usernameField.delegate = self;
-    self.usernameField.returnKeyType = UIReturnKeyNext;
-    self.usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
-
-    self.passwordField.delegate = self;
-    self.passwordField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.passwordField.returnKeyType = UIReturnKeyDone;
+    self.perfectScoreTweetField.delegate = self;
+    self.perfectScoreTweetField.returnKeyType = UIReturnKeyNext;
+    self.perfectScoreTweetField.autocorrectionType = UITextAutocorrectionTypeNo;
+    
+    self.highscoreTweetField.delegate = self;
+    self.highscoreTweetField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.highscoreTweetField.returnKeyType = UIReturnKeyDone;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -47,13 +66,49 @@
 
 #pragma - Hide Keyboard logic
 - (void) hideKeyboard {
-    [ self.usernameField resignFirstResponder];
-    [ self.passwordField resignFirstResponder];
+    [ self.perfectScoreTweetField resignFirstResponder];
+    [ self.highscoreTweetField resignFirstResponder];
+}
+
+- (IBAction)clickedChangeVideoSettings:(id)sender {
+    Settings *settings = [ Settings fetchSettings: self.moc];
+    NSInteger indexVal = self.autoPlayVideo.selectedSegmentIndex;
+    settings.autoPlayVideo = [NSNumber numberWithInt: indexVal];
+    [ settings save];
+}
+
+- (IBAction)changeTheme:(id)sender {
+    Settings *settings = [ Settings fetchSettings: self.moc];
+    NSInteger indexVal = self.themeControl.selectedSegmentIndex;
+    
+    settings.lightTheme = [NSNumber numberWithInt:indexVal];
+    [ settings save];
+}
+
+- (IBAction)changeIfTweetEnabled:(id)sender {
+    Settings *settings = [ Settings fetchSettings: self.moc];
+    NSInteger indexVal = self.tweetField.selectedSegmentIndex;
+
+    settings.tweetResults = [NSNumber numberWithInt:indexVal];
+    [ settings save];
+}
+
+- (IBAction)setTweetTextForPerfectScore:(id)sender {
+    Settings *settings = [ Settings fetchSettings: self.moc];
+    settings.perfectScoreTweetText = self.perfectScoreTweetField.text;
+    [ settings save];
+}
+
+- (IBAction)setTweetTextForHighscore:(id)sender {
+    Settings *settings = [ Settings fetchSettings: self.moc];
+    settings.highscoreTweetText = self.highscoreTweetField.text;
+    [ settings save];
+
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
-    if (textField == self.usernameField){
-        [ self.passwordField becomeFirstResponder];
+    if (textField == self.perfectScoreTweetField){
+        [ self.highscoreTweetField becomeFirstResponder];
     } else {
         [self becomeFirstResponder];
         [ textField resignFirstResponder];
