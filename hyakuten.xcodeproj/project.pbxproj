@@ -23,6 +23,8 @@
 		3842EABC1BB5546500B5F1D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3842EABA1BB5546500B5F1D4 /* LaunchScreen.storyboard */; };
 		3842EAC71BB5546500B5F1D4 /* hyakutenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAC61BB5546500B5F1D4 /* hyakutenTests.m */; };
 		3842EAD21BB5546500B5F1D4 /* hyakutenUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */; };
+		38678F9E1BC510480061BF16 /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 38678F9B1BC510480061BF16 /* Settings+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		38678F9F1BC510480061BF16 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 38678F9D1BC510480061BF16 /* Settings.m */; settings = {ASSET_TAGS = (); }; };
 		386F3F731BC30AAB003020D5 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F3F721BC30AAB003020D5 /* QuizManager.m */; settings = {ASSET_TAGS = (); }; };
 		386F3F761BC3BADE003020D5 /* QuizDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F3F751BC3BADE003020D5 /* QuizDataLoader.m */; settings = {ASSET_TAGS = (); }; };
 		386F3F7C1BC3E2EB003020D5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386F3F7B1BC3E2EB003020D5 /* Social.framework */; };
@@ -92,6 +94,10 @@
 		3842EACD1BB5546500B5F1D4 /* hyakutenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hyakutenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hyakutenUITests.m; sourceTree = "<group>"; };
 		3842EAD31BB5546500B5F1D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38678F9A1BC510480061BF16 /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "Model/Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
+		38678F9B1BC510480061BF16 /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "Model/Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
+		38678F9C1BC510480061BF16 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Model/Settings.h; sourceTree = "<group>"; };
+		38678F9D1BC510480061BF16 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Model/Settings.m; sourceTree = "<group>"; };
 		386F3F711BC30AAB003020D5 /* QuizManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizManager.h; path = hyakuten/Model/QuizManager.h; sourceTree = "<group>"; };
 		386F3F721BC30AAB003020D5 /* QuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuizManager.m; path = hyakuten/Model/QuizManager.m; sourceTree = "<group>"; };
 		386F3F741BC3BADE003020D5 /* QuizDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizDataLoader.h; path = hyakuten/Model/QuizDataLoader.h; sourceTree = "<group>"; };
@@ -161,6 +167,10 @@
 		380782D81BBD738300CDEA2B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				38678F9A1BC510480061BF16 /* Settings+CoreDataProperties.h */,
+				38678F9B1BC510480061BF16 /* Settings+CoreDataProperties.m */,
+				38678F9C1BC510480061BF16 /* Settings.h */,
+				38678F9D1BC510480061BF16 /* Settings.m */,
 				380782CC1BBD72F500CDEA2B /* Question+CoreDataProperties.h */,
 				380782CD1BBD72F500CDEA2B /* Question+CoreDataProperties.m */,
 				380782D01BBD72F500CDEA2B /* Quiz+CoreDataProperties.h */,
@@ -494,6 +504,7 @@
 			files = (
 				386F3F871BC4147F003020D5 /* ScoreCalculator.m in Sources */,
 				380782E81BBD8F3900CDEA2B /* HType.m in Sources */,
+				38678F9F1BC510480061BF16 /* Settings.m in Sources */,
 				386F3F801BC4017D003020D5 /* AlertControllerFactory.m in Sources */,
 				38CD49961BC29670002DE5D4 /* HStack.m in Sources */,
 				380782D71BBD72F500CDEA2B /* Quiz.m in Sources */,
@@ -506,6 +517,7 @@
 				383EE0AA1BBC2484004F15E2 /* SettingsViewController.m in Sources */,
 				380782D41BBD72F500CDEA2B /* Question+CoreDataProperties.m in Sources */,
 				38CD49931BC29191002DE5D4 /* QuizSelectionTableView.m in Sources */,
+				38678F9E1BC510480061BF16 /* Settings+CoreDataProperties.m in Sources */,
 				380782D51BBD72F500CDEA2B /* Question.m in Sources */,
 				386F3F731BC30AAB003020D5 /* QuizManager.m in Sources */,
 				3882479C1BBAC9BB00EF6E1C /* MainTableViewController.m in Sources */,
