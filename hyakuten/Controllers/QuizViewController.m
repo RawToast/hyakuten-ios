@@ -5,29 +5,27 @@
 //  Created by James Morris on 25/09/2015.
 //  Copyright © 2015 rawtoast. All rights reserved.
 //
-
+#import <Social/Social.h>
 #import "QuizViewController.h"
-#import "MainTableViewController.h"
 #import "Question.h"
 #import "HStack.h"
 #import "QuizManager.h"
 #import "AlertControllerFactory.h"
-#import <Social/Social.h>
 #import "ScoreCalculator.h"
 #import "Settings.h"
 
 NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
 
 @interface QuizViewController ()
-    // Zero based, but incremented after posting each question. Resulting in a correct count.
-    @property short int correctCount;
-    @property QuizManager *quizManager;
-    @property short int score;
+// Zero based, but incremented after posting each question. Resulting in a correct count.
+@property short int correctCount;
+@property QuizManager *quizManager;
+@property short int score;
 @end
 
 @implementation QuizViewController
 
-- (void)viewDidLoad { 
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     if (self.quiz == nil) {
@@ -120,21 +118,40 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
 - (void) endQuiz: (BOOL) showAlert {
     NSLog(@"Ending quiz %@", self.quiz.name);
     
+    double finalScore = [ self calculateScoreAndUpdateQuiz];
+    
+    
+    // Show alternative finishing screen
+    if (showAlert){
+        NSString *quizPassedCompleted = @"completed";
+        if (finalScore > 80){
+            quizPassedCompleted = @"Passed!";
+        }
+        
+        NSString *message = [ NSString stringWithFormat:@"Quiz %@ %@, score: %.1f%%",
+                             self.quiz.name,
+                             quizPassedCompleted,
+                             finalScore];
+        
+        [ self presentQuizFinishedAlert: message];
+    } else {
+        [self.navigationController popToRootViewControllerAnimated:YES];     }
+}
+
+-(double) calculateScoreAndUpdateQuiz {
     double finalScore = [ ScoreCalculator calculatePercentageScore:self.score
                                                 withTotalQuestions:(int)self.quiz.questions.count];
+    
+    if (finalScore > 80.0) {
+        self.quiz.completed = [NSNumber numberWithBool:YES];
+        self.quiz.completionDate = [NSDate date];
+    }
     
     [ self.quizManager updateWithScore: [NSNumber numberWithDouble:finalScore]];
     NSError *error = nil;
     [ self.moc save:&error];
     
-    // Show alternative finishing screen
-    if (showAlert){
-    NSString *message = [ NSString stringWithFormat:@"Quiz %@ completed, score: %.1f%%",
-                         self.quiz.name,
-                         finalScore];
-        [ self presentQuizFinishedAlert: message];
-    } else {
-        [self.navigationController popToRootViewControllerAnimated:YES];     }
+    return finalScore;
 }
 
 -(void) presentQuizFinishedAlert: (NSString *) message {
@@ -180,15 +197,15 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
             
             tweetText = [ tweetText stringByAppendingString: tweetSuffix];
             [tweetSheet setInitialText: tweetText];
-
+            
             [self presentViewController:tweetSheet animated:YES completion:nil];
         }
         else
         {
             // Not setup account
             UIAlertController *twitterAlert = [UIAlertController alertControllerWithTitle:@"Sorry"
-                                                                           message:@"You can't send a tweet right now, make your device has an internet connection and you have at least one Twitter account setup"
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
+                                                                                  message:@"You can't send a tweet right now, make your device has an internet connection and you have at least one Twitter account setup"
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
             void (^dismiss)(UIAlertAction *action) = ^(UIAlertAction *action){
                 [twitterAlert dismissViewControllerAnimated:YES completion:nil];
                 [self.navigationController popToRootViewControllerAnimated:YES];

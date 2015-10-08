@@ -7,7 +7,6 @@
 //
 
 #import "MainTableViewController.h"
-#import "QuizViewController.h"
 #import "SettingsViewController.h"
 #import "PreQuizViewController.h"
 #import "AlertControllerFactory.h"
