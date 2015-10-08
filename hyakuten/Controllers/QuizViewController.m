@@ -121,7 +121,7 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
     NSLog(@"Ending quiz %@", self.quiz.name);
     
     double finalScore = [ ScoreCalculator calculatePercentageScore:self.score
-                                                withTotalQuestions:self.quiz.questions.count];
+                                                withTotalQuestions:(int)self.quiz.questions.count];
     
     [ self.quizManager updateWithScore: [NSNumber numberWithDouble:finalScore]];
     NSError *error = nil;
