@@ -9,11 +9,13 @@
 #import "MainTableViewController.h"
 #import "QuizViewController.h"
 #import "SettingsViewController.h"
+#import "PreQuizViewController.h"
 #import "QuizSelectionTableView.h"
 #import "Quiz.h"
 
-NSString *const NAVIGATE_TO_QUIZ_SEGUE = @"NavigateToQuizView";
 NSString *const NAVIGATE_TO_SETTINGS_SEGUE = @"NavigateToSettings";
+NSString *const NAVIGATE_TO_PRE_QUIZ_SEGUE = @"NavigateToPreQuiz";
+
 
 @interface MainTableViewController ()
 @end
@@ -114,34 +116,28 @@ NSString *const NAVIGATE_TO_SETTINGS_SEGUE = @"NavigateToSettings";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  {
-     NSLog(@"Didselect row at index path %@", indexPath);
-     // Here we should add some identifier details, or use sender
-     //UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
-     
-     
+     NSLog(@"Did select row at index path %@", indexPath);
      Quiz *quiz = [ self.fetchResultsController objectAtIndexPath: indexPath];
-     NSLog(@"Fetched Quiz %@ with %lu questions", quiz.name, [quiz questions].count);
+     NSUInteger count = quiz.questions.count;
      
-     // Need to pass values from the cell, e.g. questions
+     NSLog(@"Fetched Quiz %@ with %lu questions", quiz.name, (unsigned long)count);
      
-     //self.selectedQuiz = quiz;
-     
-     [self performSegueWithIdentifier:NAVIGATE_TO_QUIZ_SEGUE
+     [self performSegueWithIdentifier:NAVIGATE_TO_PRE_QUIZ_SEGUE
                               sender: quiz];
  }
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([[segue identifier] isEqualToString: NAVIGATE_TO_QUIZ_SEGUE]) {
-        QuizViewController *controller = [segue destinationViewController];
-        controller.moc = self.moc;
-        controller.quiz = (Quiz*) sender;
-        NSLog(@"Passed moc to QuizViewController");
-    } else if ([[segue identifier] isEqualToString: NAVIGATE_TO_SETTINGS_SEGUE]) {
+    if ([[segue identifier] isEqualToString: NAVIGATE_TO_SETTINGS_SEGUE]) {
         SettingsViewController *controller = [ segue destinationViewController];
         controller.moc = self.moc;
         NSLog(@"Passed moc to SettingsViewController");
 
+    } else if ([[segue identifier] isEqualToString: NAVIGATE_TO_PRE_QUIZ_SEGUE]) {
+        PreQuizViewController *controller = [ segue destinationViewController];
+        controller.moc = self.moc;
+        controller.quiz = (Quiz*) sender;
+        NSLog(@"Passed moc to PreQuizViewController");
     }
 }
 
