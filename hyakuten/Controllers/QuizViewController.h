@@ -16,6 +16,7 @@
 @property (strong, nonatomic) Quiz *quiz;
 @property (weak, nonatomic) IBOutlet UILabel *quizLabel;
 @property (weak, nonatomic) IBOutlet UILabel *questionInfo;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 
 @property (weak, nonatomic) IBOutlet UILabel *shownQuestion;
 @property (weak, nonatomic) IBOutlet UIButton *answerButtonA;
