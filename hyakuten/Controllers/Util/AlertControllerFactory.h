@@ -8,9 +8,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#pragma clang diagnostic ignored "-Wnullability-completeness"
+
 @interface AlertControllerFactory : NSObject
 
 + (UIAlertController *)createOkAlertWithMessage: (NSString *)message;
 + (UIAlertController *)createOkAlertWithTitle: (NSString *)title andMessage:(NSString *)message;
-+ (void) addOKActionWithHandler:(void (^ __nullable)(UIAlertAction *action)) handler;
++ (void) addOKActionToAlert: (UIAlertController *) alert withHandler:(void (^ __nullable)(UIAlertAction *action)) actionHandler;
 @end

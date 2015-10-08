@@ -72,14 +72,14 @@
 
 - (IBAction)clickedChangeVideoSettings:(id)sender {
     Settings *settings = [ Settings fetchSettings: self.moc];
-    NSInteger indexVal = self.autoPlayVideo.selectedSegmentIndex;
+    int indexVal = (int)self.autoPlayVideo.selectedSegmentIndex;
     settings.autoPlayVideo = [NSNumber numberWithInt: indexVal];
     [ settings save];
 }
 
 - (IBAction)changeTheme:(id)sender {
     Settings *settings = [ Settings fetchSettings: self.moc];
-    NSInteger indexVal = self.themeControl.selectedSegmentIndex;
+    int indexVal = (int) self.themeControl.selectedSegmentIndex;
     
     settings.lightTheme = [NSNumber numberWithInt:indexVal];
     [ settings save];
@@ -87,7 +87,7 @@
 
 - (IBAction)changeIfTweetEnabled:(id)sender {
     Settings *settings = [ Settings fetchSettings: self.moc];
-    NSInteger indexVal = self.tweetField.selectedSegmentIndex;
+    int indexVal = (int)  self.tweetField.selectedSegmentIndex;
 
     settings.tweetResults = [NSNumber numberWithInt:indexVal];
     [ settings save];

@@ -25,6 +25,7 @@
 		3842EAD21BB5546500B5F1D4 /* hyakutenUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */; };
 		38678F9E1BC510480061BF16 /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 38678F9B1BC510480061BF16 /* Settings+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		38678F9F1BC510480061BF16 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 38678F9D1BC510480061BF16 /* Settings.m */; settings = {ASSET_TAGS = (); }; };
+		38678FA51BC562E20061BF16 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38678FA41BC562E20061BF16 /* InformationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		386F3F731BC30AAB003020D5 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F3F721BC30AAB003020D5 /* QuizManager.m */; settings = {ASSET_TAGS = (); }; };
 		386F3F761BC3BADE003020D5 /* QuizDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F3F751BC3BADE003020D5 /* QuizDataLoader.m */; settings = {ASSET_TAGS = (); }; };
 		386F3F7C1BC3E2EB003020D5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386F3F7B1BC3E2EB003020D5 /* Social.framework */; };
@@ -35,6 +36,7 @@
 		38703B121BBE8F7500C840E3 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 38703B101BBE8F7500C840E3 /* .travis.yml */; settings = {ASSET_TAGS = (); }; };
 		38703B131BBE8F7500C840E3 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 38703B101BBE8F7500C840E3 /* .travis.yml */; settings = {ASSET_TAGS = (); }; };
 		3882479C1BBAC9BB00EF6E1C /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3882479B1BBAC9BB00EF6E1C /* MainTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		38934B351BC6655A00436D04 /* PreQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38934B341BC6655A00436D04 /* PreQuizViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3899317A1BBE80DB00F2A32C /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389931791BBE80DB00F2A32C /* CoreDataHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		38CD49931BC29191002DE5D4 /* QuizSelectionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD49921BC29191002DE5D4 /* QuizSelectionTableView.m */; settings = {ASSET_TAGS = (); }; };
 		38CD49961BC29670002DE5D4 /* HStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD49951BC29670002DE5D4 /* HStack.m */; settings = {ASSET_TAGS = (); }; };
@@ -98,6 +100,8 @@
 		38678F9B1BC510480061BF16 /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "Model/Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
 		38678F9C1BC510480061BF16 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Model/Settings.h; sourceTree = "<group>"; };
 		38678F9D1BC510480061BF16 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Model/Settings.m; sourceTree = "<group>"; };
+		38678FA31BC562E20061BF16 /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InformationViewController.h; path = Controllers/InformationViewController.h; sourceTree = "<group>"; };
+		38678FA41BC562E20061BF16 /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InformationViewController.m; path = Controllers/InformationViewController.m; sourceTree = "<group>"; };
 		386F3F711BC30AAB003020D5 /* QuizManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizManager.h; path = hyakuten/Model/QuizManager.h; sourceTree = "<group>"; };
 		386F3F721BC30AAB003020D5 /* QuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuizManager.m; path = hyakuten/Model/QuizManager.m; sourceTree = "<group>"; };
 		386F3F741BC3BADE003020D5 /* QuizDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizDataLoader.h; path = hyakuten/Model/QuizDataLoader.h; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 		38703B101BBE8F7500C840E3 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		3882479A1BBAC9BB00EF6E1C /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
 		3882479B1BBAC9BB00EF6E1C /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
+		38934B331BC6655A00436D04 /* PreQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreQuizViewController.h; path = Controllers/PreQuizViewController.h; sourceTree = "<group>"; };
+		38934B341BC6655A00436D04 /* PreQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreQuizViewController.m; path = Controllers/PreQuizViewController.m; sourceTree = "<group>"; };
 		389931791BBE80DB00F2A32C /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		38CD49911BC29191002DE5D4 /* QuizSelectionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizSelectionTableView.h; sourceTree = "<group>"; };
 		38CD49921BC29191002DE5D4 /* QuizSelectionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizSelectionTableView.m; sourceTree = "<group>"; };
@@ -271,6 +277,8 @@
 		3842EADF1BB5A8E200B5F1D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				38934B331BC6655A00436D04 /* PreQuizViewController.h */,
+				38934B341BC6655A00436D04 /* PreQuizViewController.m */,
 				386F3F7D1BC40142003020D5 /* Util */,
 				383EE0A81BBC2484004F15E2 /* SettingsViewController.h */,
 				383EE0A91BBC2484004F15E2 /* SettingsViewController.m */,
@@ -278,6 +286,8 @@
 				3842EAB31BB5546500B5F1D4 /* QuizViewController.m */,
 				3882479A1BBAC9BB00EF6E1C /* MainTableViewController.h */,
 				3882479B1BBAC9BB00EF6E1C /* MainTableViewController.m */,
+				38678FA31BC562E20061BF16 /* InformationViewController.h */,
+				38678FA41BC562E20061BF16 /* InformationViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -502,6 +512,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38678FA51BC562E20061BF16 /* InformationViewController.m in Sources */,
+				38934B351BC6655A00436D04 /* PreQuizViewController.m in Sources */,
 				386F3F871BC4147F003020D5 /* ScoreCalculator.m in Sources */,
 				380782E81BBD8F3900CDEA2B /* HType.m in Sources */,
 				38678F9F1BC510480061BF16 /* Settings.m in Sources */,

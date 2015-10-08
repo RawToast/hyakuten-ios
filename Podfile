@@ -1,3 +1,3 @@
 platform :ios, '8.0'
 
-pod "YouTube-Player-iOS-Helper", "~> 0.1"
+pod 'youtube-ios-player-helper', '~> 0.1.4'
