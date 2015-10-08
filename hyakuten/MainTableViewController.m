@@ -201,7 +201,7 @@ NSString *const NAVIGATE_TO_PRE_QUIZ_SEGUE = @"NavigateToPreQuiz";
             title = @"おはよう！";
         } else if (hour >11 && hour < 17) {
             title = @"こんにちは！";
-        } else if (hour > 17 || hour < 4) {
+        } else if (hour >= 17 || hour < 4) {
             title = @"こんばんは！";
         }
         

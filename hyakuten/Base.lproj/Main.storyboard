@@ -319,7 +319,7 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-fr-nvL">
+                                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-fr-nvL" userLabel="VideoToggle">
                                                             <rect key="frame" x="305" y="8" width="280" height="29"/>
                                                             <animations/>
                                                             <segments>
@@ -399,14 +399,14 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="yhs-kJ-FHW">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qof-99-VzY">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Perfect score tweet text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qof-99-VzY">
                                                             <rect key="frame" x="0.0" y="12" width="280" height="21"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="usernameField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m3i-5H-B5r">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="usernameField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="I just beat my highscore!" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m3i-5H-B5r">
                                                             <rect key="frame" x="305" y="7" width="280" height="30"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -439,14 +439,14 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Ag9-XD-hrR">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BX1-Vj-Ryp">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High score tweet text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BX1-Vj-Ryp">
                                                             <rect key="frame" x="0.0" y="12" width="280" height="21"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWM-CF-Gw8">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="I just aced" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWM-CF-Gw8">
                                                             <rect key="frame" x="305" y="7" width="280" height="30"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -464,6 +464,7 @@
                                                 <constraint firstItem="Ag9-XD-hrR" firstAttribute="trailing" secondItem="p8u-fa-NRv" secondAttribute="trailingMargin" id="1Sk-gp-kgj"/>
                                                 <constraint firstItem="Ag9-XD-hrR" firstAttribute="top" secondItem="p8u-fa-NRv" secondAttribute="top" id="1so-t3-cpu"/>
                                                 <constraint firstItem="Ag9-XD-hrR" firstAttribute="centerY" secondItem="p8u-fa-NRv" secondAttribute="centerY" id="VMK-Hz-j1V"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="FWM-CF-Gw8" secondAttribute="trailing" constant="-1" id="fG7-4J-CnS"/>
                                                 <constraint firstItem="Ag9-XD-hrR" firstAttribute="leading" secondItem="p8u-fa-NRv" secondAttribute="leadingMargin" id="h9W-Ff-a58"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -503,6 +504,7 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qdM-Ml-Ott" secondAttribute="trailing" constant="-1" id="HRh-Go-wXW"/>
                                                 <constraint firstItem="ALN-Sa-d8V" firstAttribute="trailing" secondItem="9nz-HQ-MwH" secondAttribute="trailingMargin" id="aoG-zB-pHU"/>
                                                 <constraint firstItem="ALN-Sa-d8V" firstAttribute="centerY" secondItem="9nz-HQ-MwH" secondAttribute="centerY" id="kqF-1g-m5X"/>
                                                 <constraint firstItem="ALN-Sa-d8V" firstAttribute="leading" secondItem="9nz-HQ-MwH" secondAttribute="leadingMargin" id="mhg-VM-QUA"/>

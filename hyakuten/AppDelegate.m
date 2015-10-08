@@ -37,6 +37,7 @@
         [QuizDataLoader generateQuizData: self.managedObjectContext];
         NSLog(@"Data load complete");
         isFirstRun = YES;
+        [ self saveContext];
     }
     
     // Create settings singleton here.
