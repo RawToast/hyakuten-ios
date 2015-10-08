@@ -41,7 +41,6 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
     self.score = 0;
     self.quizManager = [[QuizManager alloc] initWithQuiz: self.quiz];
     Question *firstQuestion = [self.quizManager currentQuestion];
-
     [ self prepareViewForQuestion : firstQuestion];
 }
 
@@ -54,7 +53,8 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
 - (void) prepareViewForQuestion: (Question *) question {
     NSMutableArray *answers = [question generateAnswers];
     [ self setAnswerButtons : answers];
-    
+    float nextProgress = self.progressBar.progress + 0.1f;
+    self.progressBar.progress = nextProgress;
     self.quizLabel.text = self.quiz.name;
     self.shownQuestion.text = question.sentenceClosed;
     self.questionInfo.text = @"Select the correct particle to fill in the blank"; //question.information;
@@ -186,8 +186,17 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
         else
         {
             // Not setup account
-            UIAlertController *twitterAlert = [ AlertControllerFactory createOkAlertWithTitle:@"Sorry"
-                                                                                   andMessage:@"You can't send a tweet right now, make your device has an internet connection and you have at least one Twitter account setup" ];
+            UIAlertController *twitterAlert = [UIAlertController alertControllerWithTitle:@"Sorry"
+                                                                           message:@"You can't send a tweet right now, make your device has an internet connection and you have at least one Twitter account setup"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            void (^dismiss)(UIAlertAction *action) = ^(UIAlertAction *action){
+                [twitterAlert dismissViewControllerAnimated:YES completion:nil];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            };
+
+            
+            [ AlertControllerFactory addOKActionToAlert:twitterAlert withHandler:dismiss];
+            
             [ self presentViewController: twitterAlert animated:YES completion:nil];
         }
     }
