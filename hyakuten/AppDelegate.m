@@ -30,12 +30,13 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quiz" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     NSArray *results = [ self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
+    BOOL isFirstRun = NO;
     NSLog(@"Found quiz data. %@ question sets loaded", @(results.count));
     if (results.count == 0) {
         NSLog(@"No quiz data found, loading data...");
         [QuizDataLoader generateQuizData: self.managedObjectContext];
         NSLog(@"Data load complete");
+        isFirstRun = YES;
     }
     
     // Create settings singleton here.
@@ -46,6 +47,7 @@
     MainTableViewController *tableView = (MainTableViewController*) [ views objectAtIndex:0];
     
     tableView.moc= self.managedObjectContext;
+    tableView.isFirstRun = isFirstRun;
     
     return YES;
 }

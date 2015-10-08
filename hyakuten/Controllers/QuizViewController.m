@@ -193,7 +193,6 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
                 [twitterAlert dismissViewControllerAnimated:YES completion:nil];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             };
-
             
             [ AlertControllerFactory addOKActionToAlert:twitterAlert withHandler:dismiss];
             

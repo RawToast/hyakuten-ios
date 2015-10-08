@@ -14,6 +14,7 @@
 extern NSString *const NAVIGATE_TO_QUIZ_SEGUE;
 
 @property (nonatomic, strong) NSManagedObjectContext *moc;
-
 @property (nonatomic, strong) NSFetchedResultsController *fetchResultsController;
+@property BOOL isFirstRun;
+
 @end

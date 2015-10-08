@@ -10,6 +10,7 @@
 #import "QuizViewController.h"
 #import "SettingsViewController.h"
 #import "PreQuizViewController.h"
+#import "AlertControllerFactory.h"
 #import "QuizSelectionTableView.h"
 #import "Quiz.h"
 
@@ -36,6 +37,8 @@ NSString *const NAVIGATE_TO_PRE_QUIZ_SEGUE = @"NavigateToPreQuiz";
         NSLog(@"Error fetching core data %@", error);
         abort();
     }
+    
+    [ self showFirstRunDialog ];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -184,6 +187,28 @@ NSString *const NAVIGATE_TO_PRE_QUIZ_SEGUE = @"NavigateToPreQuiz";
     
 
     return _fetchResultsController;
+}
+
+#pragma alerts
+- (void) showFirstRunDialog{
+    if (self.isFirstRun) {
+        NSDate *today = [NSDate date];
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSDateComponents *dateComponents = [gregorian components:(NSCalendarUnitHour  | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:today];
+        NSInteger hour = [dateComponents hour];
+        
+        NSString *title;
+        if (hour >= 4 && hour <= 11) {
+            title = @"おはよう！";
+        } else if (hour >11 && hour < 17) {
+            title = @"こんにちは！";
+        } else if (hour > 17 || hour < 4) {
+            title = @"こんばんは！";
+        }
+        
+        UIAlertController *alertController = [ AlertControllerFactory createOkAlertWithTitle:title andMessage:@"Insert description here!"];
+        [ self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 -(void) controllerWillChangeContent:(NSFetchedResultsController *)controller {
