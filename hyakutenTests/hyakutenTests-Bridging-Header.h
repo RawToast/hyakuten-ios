@@ -8,3 +8,4 @@
 #import "Question+CoreDataProperties.h"
 #import "QuizViewController.h"
 #import "ScoreCalculator.h"
+#import "HQuizUpdateManager.h"

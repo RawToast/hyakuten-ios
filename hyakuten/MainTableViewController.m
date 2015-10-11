@@ -11,6 +11,7 @@
 #import "PreQuizViewController.h"
 #import "AlertControllerFactory.h"
 #import "QuizSelectionTableView.h"
+#import "HQuizUpdateManager.h"
 #import "Quiz.h"
 
 NSString *const NAVIGATE_TO_SETTINGS_SEGUE = @"NavigateToSettings";
@@ -36,6 +37,9 @@ NSString *const NAVIGATE_TO_PRE_QUIZ_SEGUE = @"NavigateToPreQuiz";
         NSLog(@"Error fetching core data %@", error);
         abort();
     }
+    
+    HQuizUpdateManager *qMan = [[HQuizUpdateManager alloc] init];
+    [ qMan checkForUpdates:1];
     
     [ self showFirstRunDialog ];
 }

@@ -23,6 +23,8 @@
 		3842EABC1BB5546500B5F1D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3842EABA1BB5546500B5F1D4 /* LaunchScreen.storyboard */; };
 		3842EAC71BB5546500B5F1D4 /* hyakutenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAC61BB5546500B5F1D4 /* hyakutenTests.m */; };
 		3842EAD21BB5546500B5F1D4 /* hyakutenUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */; };
+		385816D41BCAABE9008716A8 /* HQuizUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 385816D31BCAABE9008716A8 /* HQuizUpdateManager.m */; settings = {ASSET_TAGS = (); }; };
+		385816D71BCABAC6008716A8 /* HQuizUpdateManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385816D61BCABAC6008716A8 /* HQuizUpdateManagerTest.swift */; settings = {ASSET_TAGS = (); }; };
 		38678F9E1BC510480061BF16 /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 38678F9B1BC510480061BF16 /* Settings+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		38678F9F1BC510480061BF16 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 38678F9D1BC510480061BF16 /* Settings.m */; settings = {ASSET_TAGS = (); }; };
 		38678FA51BC562E20061BF16 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38678FA41BC562E20061BF16 /* InformationViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -96,6 +98,9 @@
 		3842EACD1BB5546500B5F1D4 /* hyakutenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hyakutenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3842EAD11BB5546500B5F1D4 /* hyakutenUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hyakutenUITests.m; sourceTree = "<group>"; };
 		3842EAD31BB5546500B5F1D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		385816D21BCAABE9008716A8 /* HQuizUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HQuizUpdateManager.h; path = Update/HQuizUpdateManager.h; sourceTree = "<group>"; };
+		385816D31BCAABE9008716A8 /* HQuizUpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HQuizUpdateManager.m; path = Update/HQuizUpdateManager.m; sourceTree = "<group>"; };
+		385816D61BCABAC6008716A8 /* HQuizUpdateManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HQuizUpdateManagerTest.swift; sourceTree = "<group>"; };
 		38678F9A1BC510480061BF16 /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "Model/Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
 		38678F9B1BC510480061BF16 /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "Model/Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
 		38678F9C1BC510480061BF16 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Model/Settings.h; sourceTree = "<group>"; };
@@ -232,6 +237,7 @@
 		3842EAAB1BB5546500B5F1D4 /* hyakuten */ = {
 			isa = PBXGroup;
 			children = (
+				385816D51BCAABF0008716A8 /* Update */,
 				380782E51BBD8BCA00CDEA2B /* hyakuten-Bridging-Header.h */,
 				3842EAAF1BB5546500B5F1D4 /* AppDelegate.h */,
 				3842EAB01BB5546500B5F1D4 /* AppDelegate.m */,
@@ -261,6 +267,7 @@
 				380782E91BBD971F00CDEA2B /* hyakutenTests-Bridging-Header.h */,
 				389931791BBE80DB00F2A32C /* CoreDataHelper.swift */,
 				386F3F811BC413A1003020D5 /* ScoreCalulcationTest.swift */,
+				385816D61BCABAC6008716A8 /* HQuizUpdateManagerTest.swift */,
 			);
 			path = hyakutenTests;
 			sourceTree = "<group>";
@@ -311,6 +318,15 @@
 				3842EAB81BB5546500B5F1D4 /* Assets.xcassets */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		385816D51BCAABF0008716A8 /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				385816D21BCAABE9008716A8 /* HQuizUpdateManager.h */,
+				385816D31BCAABE9008716A8 /* HQuizUpdateManager.m */,
+			);
+			name = Update;
 			sourceTree = "<group>";
 		};
 		386F3F7D1BC40142003020D5 /* Util */ = {
@@ -514,6 +530,7 @@
 			files = (
 				38678FA51BC562E20061BF16 /* InformationViewController.m in Sources */,
 				38934B351BC6655A00436D04 /* PreQuizViewController.m in Sources */,
+				385816D41BCAABE9008716A8 /* HQuizUpdateManager.m in Sources */,
 				386F3F871BC4147F003020D5 /* ScoreCalculator.m in Sources */,
 				380782E81BBD8F3900CDEA2B /* HType.m in Sources */,
 				38678F9F1BC510480061BF16 /* Settings.m in Sources */,
@@ -541,6 +558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385816D71BCABAC6008716A8 /* HQuizUpdateManagerTest.swift in Sources */,
 				386F3F821BC413A1003020D5 /* ScoreCalulcationTest.swift in Sources */,
 				3899317A1BBE80DB00F2A32C /* CoreDataHelper.swift in Sources */,
 				3842EAC71BB5546500B5F1D4 /* hyakutenTests.m in Sources */,
