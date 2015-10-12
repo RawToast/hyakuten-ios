@@ -55,6 +55,7 @@
 }
 
 -(void) updateWithScore:(NSNumber*) score {
+    NSLog(@"Updating highscore to %@", score);
     self.quiz.highscore = score;
 }
 

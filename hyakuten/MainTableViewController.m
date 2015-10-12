@@ -100,20 +100,6 @@ NSString *const NAVIGATE_TO_PRE_QUIZ_SEGUE = @"NavigateToPreQuiz";
 }
 
 
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-}
-*/
-
-
 #pragma mark - Navigation
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -205,7 +191,7 @@ NSString *const NAVIGATE_TO_PRE_QUIZ_SEGUE = @"NavigateToPreQuiz";
             title = @"こんばんは！";
         }
         
-        UIAlertController *alertController = [ AlertControllerFactory createOkAlertWithTitle:title andMessage:@"Insert description here!"];
+        UIAlertController *alertController = [ AlertControllerFactory createOkAlertWithTitle:title andMessage:@"Hyakuten is a Japanese learning app that provides exercises for the popular Tae Kim grammar guide. \n "];
         [ self presentViewController:alertController animated:YES completion:nil];
     }
 }

@@ -20,9 +20,14 @@ NSString *const NAVIGATE_FROM_INFO_TO_QUIZ_SEGUE = @"InfoToQuiz";
     //gSettings *settings = [ Settings fetchSettings: self.moc ];
     //NSNumber *shouldPlayVideo = settings.autoPlayVideo;
     
-    NSDictionary *params = @{ @"playsinline" : @1,};
+    Settings *settings = [ Settings fetchSettings:[self moc ]];
+    
+    NSNumber *autoPlay = settings.autoPlayVideo;
+    
+    NSDictionary *params = @{ @"playsinline" : @1,
+                              @"autoplay" : autoPlay, };
     [ self.playerView loadWithVideoId:self.quiz.videoId playerVars:params];
-}
+    }
 
 - (IBAction)continueButtonClicked:(id)sender {
     [ self performSegueWithIdentifier:NAVIGATE_FROM_INFO_TO_QUIZ_SEGUE sender:self.quiz];

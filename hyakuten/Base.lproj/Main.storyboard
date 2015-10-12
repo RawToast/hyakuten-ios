@@ -159,7 +159,7 @@
             </objects>
             <point key="canvasLocation" x="3707" y="1827"/>
         </scene>
-        <!--Main View-->
+        <!--Hyakuten-->
         <scene sceneID="Fxz-tk-B9X">
             <objects>
                 <tableViewController id="gPJ-JS-rRm" customClass="MainTableViewController" sceneMemberID="viewController">
@@ -186,7 +186,7 @@
                             <outlet property="delegate" destination="gPJ-JS-rRm" id="OfD-HK-4t0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Main View" id="vLk-ux-f4N">
+                    <navigationItem key="navigationItem" title="Hyakuten" id="vLk-ux-f4N">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="9KX-Hv-2id">
                             <connections>
                                 <segue destination="QVI-BL-ZjJ" kind="show" identifier="NavigateToSettings" id="LHz-Zi-T3V"/>
@@ -225,7 +225,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -245,7 +245,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

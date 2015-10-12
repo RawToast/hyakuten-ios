@@ -96,7 +96,8 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
     if ([self.quizManager isLastQuestion]) {
         NSLog(@"User reached end of the quiz");
         BOOL showAlert = YES;
-        if ( [self perfectScore]) {
+        int previousHS = [ self.quiz.highscore intValue];
+        if ( [self perfectScore] || self.score > previousHS) {
             [self tweetScore];
             showAlert = NO;
         }
@@ -147,7 +148,7 @@ NSString *const RETURN_TO_MAIN_MENU_SEGUE = @"ReturnFromQuiz";
         self.quiz.completionDate = [NSDate date];
     }
     
-    [ self.quizManager updateWithScore: [NSNumber numberWithDouble:finalScore]];
+    [ self.quizManager updateWithScore: [NSNumber numberWithInt: self.score]];
     NSError *error = nil;
     [ self.moc save:&error];
     

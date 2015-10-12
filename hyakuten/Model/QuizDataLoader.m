@@ -85,7 +85,7 @@
     
     quiz.completed = [ NSNumber numberWithBool:NO];
     quiz.section = @"2. Essential Grammar";
-    quiz.name = @"Explanatory の";
+    quiz.name = @"Explanatory particles";
     quiz.information = @"The 「の」 particle attached at the end of the last clause of a sentence can also convey an explanatory tone to your sentence. For example, if someone asked you if you have time, you might respond, 'The thing is I'm kind of busy right now.' The abstract generic noun of 'the thing is...' can also be expressed with the 「の」 particle. This type of sentence has an embedded meaning that explains the reason(s) for something else.";
     quiz.url = @"http://www.guidetojapanese.org/learn/grammar/nounparticles";
     quiz.videoId = @"D7wRJug13d0";
